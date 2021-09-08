@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "575385743943",
+    "project_id": "appmaxshoes-e69df",
+    "storage_bucket": "appmaxshoes-e69df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575385743943:android:d58b10e56b802e0dd97762",
+        "android_client_info": {
+          "package_name": "com.sapatinho.maxshoes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "575385743943-gteolhvg1dchhtvfn9p07l59d4jiokr4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3YAh3kFsLhIDqBb58KjOKu0RBYVT_4ig"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "575385743943-gteolhvg1dchhtvfn9p07l59d4jiokr4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
