@@ -28,7 +28,7 @@ class _AddProdutoState extends State<AddProduto> {
     context,
     listen: false,
   );
-  String dropdownValue = 'adulto';
+  String dropdownValue = 'masculino';
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +97,7 @@ class _AddProdutoState extends State<AddProduto> {
                     dropdownValue = texto!;
                   });
                 },
-                items: <String>['adulto', 'infantil', 'feminino']
+                items: <String>['masculino', 'infantil', 'feminino']
                     .map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
@@ -119,26 +119,26 @@ class _AddProdutoState extends State<AddProduto> {
                   final result =
                       await FilePicker.platform.pickFiles(type: FileType.image);
                   //ele vai verifica se é nulo, pq o usuario pode abrir a pasta e nao selecionar nada..ai daria erro.
-                  if (result != null) {
-                    if (Platform.isAndroid || Platform.isIOS) {
-                      final path = result.files.first.path;
-                      final image = File(path);
-                      final bytes = await image.readAsBytes();
-                      file = bytes;
-                    } else {
-                      final bytes = result.files.first.bytes;
-                      file = bytes;
-                    }
-                    setState(() {});
-                  }
                   // if (result != null) {
-                  //   setState(() {
-                  //     //pra nao pegar uma lista inteira, coloco pra pegar somente o primeiro e puxo os bytes deste arquivo
-                  //     final bytes = result.files.first.bytes;
-                  //     // file vai receber os bytes que acabei de puxar.
+                  //   if (Platform.isAndroid || Platform.isIOS) {
+                  //     final path = result.files.first.path;
+                  //     final image = File(path);
+                  //     final bytes = await image.readAsBytes();
                   //     file = bytes;
-                  //   });
+                  //   } else {
+                  //     final bytes = result.files.first.bytes;
+                  //     file = bytes;
+                  //   }
+                  //   setState(() {});
                   // }
+                  if (result != null) {
+                    setState(() {
+                      //pra nao pegar uma lista inteira, coloco pra pegar somente o primeiro e puxo os bytes deste arquivo
+                      final bytes = result.files.first.bytes;
+                      // file vai receber os bytes que acabei de puxar.
+                      file = bytes;
+                    });
+                  }
                 },
                 child: Row(
                   children: [
