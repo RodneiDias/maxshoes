@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:max_shoes_vendedor/pages/login_page.dart';
+import 'package:max_shoes_vendedor/pages/login2_page.dart';
 import 'package:provider/provider.dart';
 import '../widgets/splash_loading_widget.dart';
 import 'home_page.dart';
