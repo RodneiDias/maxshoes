@@ -21,62 +21,8 @@ class _ListaProdutoState extends State<ListaProduto> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // drawer: Drawer(
-      //   child: ListView(
-      //     children: [
-
-      //       UserAccountsDrawerHeader(
-      //           currentAccountPicture: CircleAvatar(
-      //             child: Image.asset(''),
-
-      //         ),
-      //         otherAccountsPictures: [
-      //           CircleAvatar(
-      //             child: Icon(Icons.person_outline),
-      //           )
-      //         ], // outras imagens da conta
-      //         accountName: Text(userController.model.nome), //nome da conta
-      //         accountEmail: Text(userController.user!.email!),
-      //         ),
-
-      //       ListTile(
-      //         title: Text("Menu", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,), )
-      //       ),
-      //       ListTile(
-      //         leading: Icon(Icons.login_sharp),
-      //         title: Text("??????????????????", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,), ),
-      //         onTap:(){
-      //           // Navigator.push(
-      //           //   context,
-      //           //   MaterialPageRoute(
-      //           //     builder: (context) => ColecaoDiarioPage(),
-      //           //   ),
-      //           // );
-      //         },
-      //       ),
-      //       ListTile(
-      //         leading: Icon(Icons.list_alt_outlined),
-      //         title: Text("!!!!!!!!!!!!!!!!!!", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,), ),
-      //         onTap:(){
-      //           // Navigator.push(
-      //           //   context,
-      //           //   MaterialPageRoute(
-      //           //     builder: (context) => EditProdutoPage(),
-      //           //   ),
-      //           // );
-      //         },
-      //       ),
-      //       ListTile(
-      //         leading: Icon(Icons.exit_to_app),
-      //         title: Text("Sair", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,), ),
-      //         onTap:(){
-      //           userController.logout();
-      //         },
-      //       ),
-
-      //     ],
-      //   ),
-      // ),
+      backgroundColor: Colors.blueAccent,
+      
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
         stream: FirebaseFirestore.instance
             //filtra a coleção
@@ -101,9 +47,10 @@ class _ListaProdutoState extends State<ListaProduto> {
               final produto = produtos[index];
               return ListTile(
                 title: Container(
-                  decoration: BoxDecoration(border: Border.all(width: 3)),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.white),
+                  
                   child: Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.all(1.0),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,36 +61,27 @@ class _ListaProdutoState extends State<ListaProduto> {
                                 children: [
                                   produto.imagem != null
                                       ? Image.memory(produto.imagem!,
-                                          width: 100, fit: BoxFit.cover)
+                                          width: 120, fit: BoxFit.cover)
                                       : Container(
-                                          child: Icon(Icons.location_on),
-                                          width: 100,
-                                          height: 100,
-                                          color: Colors.blue,
+                                          child: Center(child: Text('No image')),
+                                          width: 120,
+                                          height: 120,
+                                          color: Colors.grey,
                                         ),
-                                  Column(
-                                    children: [
-                                      Text('Nome: ${produto.nome}'),
-                                      SizedBox(height: 5),
-                                      Text('Categoria: ${produto.categoria}'),
-                                      SizedBox(height: 5),
-                                      Text('Descrição ${produto.descricao}'),
-                                    ],
-                                  ),
                                 ],
                               ),
                             ],
                           ),
-                          Row(
+                          Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               DropdownButton<String>(
                                 value: dropdownValue,
                                 icon: const Icon(Icons.settings),
-                                iconSize: 24,
+                                iconSize: 20,
                                 style:
-                                    const TextStyle(color: Colors.deepPurple),
+                                    const TextStyle(color: Colors.black),
                                 onChanged: (texto) {
                                   setState(() {
                                     dropdownValue = texto!;
@@ -172,29 +110,21 @@ class _ListaProdutoState extends State<ListaProduto> {
                                   );
                                 }).toList(),
                               ),
+                              Column(
+                                children: [
+                                  Text('Produto: ${produto.nome}'),
+                                  SizedBox(height: 5),
+                                  Text('Categoria: ${produto.categoria}'),
+                                  SizedBox(height: 5),
+                                  Text('Preço R\$:${produto.preco}'),
+                                ],
+                              ),
                             ],
                           ),
                         ]),
                   ),
                 ),
-                // subtitle:
-                //  leading: produto.imagem != null
-                //      ? Image.memory(produto.imagem!,
-                //          width: 72, fit: BoxFit.cover)
-                //      : Container(
-                //          child: Icon(Icons.location_on),
-                //          width: 72,
-                //          height: double.maxFinite,
-                //          color: Colors.blue,
-                //        ),
-                // onTap: () {
-                //   Navigator.push(
-                //       context,
-                //       MaterialPageRoute(
-                //         builder: (context) =>
-                //             EditProdutoPage(produto: produto),
-                //       ));
-                // },
+                
               );
             },
           );
