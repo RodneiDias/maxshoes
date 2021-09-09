@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-
 import '../controllers/user_controller.dart';
 import 'signup_page.dart';
 import 'package:flutter/material.dart';
