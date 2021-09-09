@@ -13,6 +13,8 @@ class ProdutoModel {
   final String categoria;
   final String descricao;
   final Uint8List? imagem;
+  final Uint8List? imagem2;
+  final Uint8List? imagem3;
  
   ProdutoModel({
     this.key,
@@ -25,6 +27,8 @@ class ProdutoModel {
     required this.categoria,
     required this.descricao,
     this.imagem,
+    this.imagem2,
+    this.imagem3,
   });
  
   static ProdutoModel fromMap(Map<String, dynamic> map, [String? key]) =>
@@ -39,6 +43,8 @@ class ProdutoModel {
         categoria: map['categoria'],
         descricao: map['descricao'],
         imagem: map['imagem']?.bytes,
+        imagem2: map['imagem2']?.bytes,
+        imagem3: map['imagem3']?.bytes,
       );
  
   Map<String, dynamic> toMap() => {
@@ -51,5 +57,7 @@ class ProdutoModel {
         'categoria': categoria,
         'descricao': descricao,
         'imagem': imagem != null ? Blob(imagem!) : null,
+        'imagem2': imagem2 != null ? Blob(imagem2!) : null,
+        'imagem3': imagem3 != null ? Blob(imagem3!) : null,
       };
 }

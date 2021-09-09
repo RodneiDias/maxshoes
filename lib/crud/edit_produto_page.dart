@@ -27,6 +27,8 @@ class _EditProdutoPageState extends State<EditProdutoPage> {
   late final descricaoCont = TextEditingController()
     ..text = widget.produto.descricao;
   late Uint8List? file = widget.produto.imagem;
+  late Uint8List? file2 = widget.produto.imagem2;
+  late Uint8List? file3 = widget.produto.imagem3;
 
   @override
   Widget build(BuildContext context) {
@@ -106,30 +108,98 @@ class _EditProdutoPageState extends State<EditProdutoPage> {
                   final result =
                       await FilePicker.platform.pickFiles(type: FileType.image);
                   //ele vai verifica se é nulo, pq o usuario pode abrir a pasta e nao selecionar nada..ai daria erro.
-                  if (result != null) {
-                    if (Platform.isAndroid || Platform.isIOS) {
-                      final path = result.files.first.path;
-                      final image = File(path);
-                      final bytes = await image.readAsBytes();
-                      file = bytes;
-                    } else {
-                      final bytes = result.files.first.bytes;
-                      file = bytes;
-                    }
-                    setState(() {});
-                  }
                   // if (result != null) {
-                  //   setState(() {
-                  //     //pra nao pegar uma lista inteira, coloco pra pegar somente o primeiro e puxo os bytes deste arquivo
-                  //     final bytes = result.files.first.bytes;
-                  //     // file vai receber os bytes que acabei de puxar.
+                  //   if (Platform.isAndroid || Platform.isIOS) {
+                  //     final path = result.files.first.path;
+                  //     final image = File(path);
+                  //     final bytes = await image.readAsBytes();
                   //     file = bytes;
-                  //   });
+                  //   } else {
+                  //     final bytes = result.files.first.bytes;
+                  //     file = bytes;
+                  //   }
+                  //   setState(() {});
                   // }
+                  if (result != null) {
+                    setState(() {
+                      //pra nao pegar uma lista inteira, coloco pra pegar somente o primeiro e puxo os bytes deste arquivo
+                      final bytes = result.files.first.bytes;
+                      // file vai receber os bytes que acabei de puxar.
+                      file = bytes;
+                    });
+                  }
                 },
                 child: Row(
                   children: [
                     Icon(file != null ? Icons.check : Icons.upload),
+                    Text("Adicionar imagem"),
+                  ],
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  //abrir o explorador de arquivos:
+                  final result =
+                      await FilePicker.platform.pickFiles(type: FileType.image);
+                  //ele vai verifica se é nulo, pq o usuario pode abrir a pasta e nao selecionar nada..ai daria erro.
+                  // if (result != null) {
+                  //   if (Platform.isAndroid || Platform.isIOS) {
+                  //     final path = result.files.first.path;
+                  //     final image2 = File(path);
+                  //     final bytes = await image2.readAsBytes();
+                  //     file2 = bytes;
+                  //   } else {
+                  //     final bytes = result.files.first.bytes;
+                  //     file2 = bytes;
+                  //   }
+                  //   setState(() {});
+                  // }
+                  if (result != null) {
+                    setState(() {
+                      //pra nao pegar uma lista inteira, coloco pra pegar somente o primeiro e puxo os bytes deste arquivo
+                      final bytes = result.files.first.bytes;
+                      // file vai receber os bytes que acabei de puxar.
+                      file2 = bytes;
+                    });
+                  }
+                },
+                child: Row(
+                  children: [
+                    Icon(file2 != null ? Icons.check : Icons.upload),
+                    Text("Adicionar imagem"),
+                  ],
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  //abrir o explorador de arquivos:
+                  final result =
+                      await FilePicker.platform.pickFiles(type: FileType.image);
+                  //ele vai verifica se é nulo, pq o usuario pode abrir a pasta e nao selecionar nada..ai daria erro.
+                  // if (result != null) {
+                  //   if (Platform.isAndroid || Platform.isIOS) {
+                  //     final path = result.files.first.path;
+                  //     final image3 = File(path);
+                  //     final bytes = await image3.readAsBytes();
+                  //     file3 = bytes;
+                  //   } else {
+                  //     final bytes = result.files.first.bytes;
+                  //     file3 = bytes;
+                  //   }
+                  //   setState(() {});
+                  // }
+                  if (result != null) {
+                    setState(() {
+                      //pra nao pegar uma lista inteira, coloco pra pegar somente o primeiro e puxo os bytes deste arquivo
+                      final bytes = result.files.first.bytes;
+                      // file vai receber os bytes que acabei de puxar.
+                      file3 = bytes;
+                    });
+                  }
+                },
+                child: Row(
+                  children: [
+                    Icon(file3 != null ? Icons.check : Icons.upload),
                     Text("Adicionar imagem"),
                   ],
                 ),
@@ -149,6 +219,8 @@ class _EditProdutoPageState extends State<EditProdutoPage> {
                       categoria: categoriaCont.text,
                       descricao: descricaoCont.text,
                       imagem: file,
+                      imagem2: file2,
+                      imagem3: file3,
                     ).toMap();
                     await FirebaseFirestore.instance
                         .collection('produtos')

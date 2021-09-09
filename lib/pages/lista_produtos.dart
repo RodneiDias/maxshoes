@@ -69,6 +69,26 @@ class _ListaProdutoState extends State<ListaProduto> {
                                           height: 120,
                                           color: Colors.grey,
                                         ),
+                                  produto.imagem2 != null
+                                      ? Image.memory(produto.imagem2!,
+                                          width: 120, fit: BoxFit.cover)
+                                      : Container(
+                                          child:
+                                              Center(child: Text('No image')),
+                                          width: 120,
+                                          height: 120,
+                                          color: Colors.grey,
+                                        ),
+                                  produto.imagem3 != null
+                                      ? Image.memory(produto.imagem3!,
+                                          width: 120, fit: BoxFit.cover)
+                                      : Container(
+                                          child:
+                                              Center(child: Text('No image')),
+                                          width: 120,
+                                          height: 120,
+                                          color: Colors.grey,
+                                        ),
                                 ],
                               ),
                             ],
