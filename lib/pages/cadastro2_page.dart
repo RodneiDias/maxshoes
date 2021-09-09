@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:file_picker/file_picker.dart';
 import 'package:max_shoes_vendedor/controllers/user_controller.dart';
 
 import '../models/user_model.dart';
@@ -32,21 +34,20 @@ class _SignUpPageState extends State<SignUpPage> {
         child: Stack(
           children: <Widget>[
             Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    colors: <Color>[
-                      Color(0xffCA2547),
-                      Color(0xff904674),
-                      Color(0xff506AA5),
-                      Color(0xff0097E3)
-                    ],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    tileMode: TileMode.clamp),
-              ),
-            ),
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: <Color>[
+                        Color(0xfff8f9fa),
+                        Color(0xffced4da),
+                        Color(0xff89c2d9),
+                        Color(0xff014f86),
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      tileMode: TileMode.clamp),
+                )),
             Padding(
               padding: const EdgeInsets.only(top: 50),
               child: Center(
@@ -88,7 +89,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           border: InputBorder.none,
                           icon: Icon(
                             FontAwesomeIcons.user,
-                            color: Colors.black,
+                            color: Colors.grey,
                           ),
                           hintText: 'Name',
                           hintStyle: TextStyle(fontSize: 16.0),
@@ -116,10 +117,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         style: TextStyle(fontSize: 16.0, color: Colors.black),
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          icon: Icon(
-                            Icons.email,
-                            color: Colors.black,
-                          ),
+                          icon: Icon(Icons.email, color: Colors.grey),
                           hintText: 'Email',
                           hintStyle: TextStyle(fontSize: 16.0),
                         ),
@@ -149,7 +147,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           border: InputBorder.none,
                           icon: Icon(
                             FontAwesomeIcons.lock,
-                            color: Colors.black,
+                            color: Colors.grey,
                           ),
                           hintText: 'Senha',
                           hintStyle: TextStyle(fontSize: 16.0),
@@ -157,11 +155,50 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
                     SizedBox(height: 20),
+                    GestureDetector(
+                      onTap: () async {
+                        //abrir o explorador de arquivos:
+                        final result = await FilePicker.platform
+                            .pickFiles(type: FileType.image);
+
+                        // if (result != null) {
+                        //   if (Platform.isAndroid || Platform.isIOS) {
+                        //     final path = result.files.first.path;
+                        //     final image = File(path);
+                        //     final bytes = await image.readAsBytes();
+                        //     file = bytes;
+                        //   } else {
+                        //     final bytes = result.files.first.bytes;
+                        //     file = bytes;
+                        //   }
+                        //   setState(() {});
+                        // }
+                        if (result != null) {
+                          setState(() {
+                            //pra nao pegar uma lista inteira, coloco pra pegar somente o primeiro e puxo os bytes deste arquivo
+                            final bytes = result.files.first.bytes;
+                            // file vai receber os bytes que acabei de puxar.
+                            file = bytes;
+                          });
+                        }
+                      },
+                      child: Padding(
+                          padding: EdgeInsets.all(15),
+                          child: file != null
+                              ? Image.memory(file!, width: 90, fit: BoxFit.fill)
+                              : Container(
+                                  child: Center(child: Icon(Icons.photo)),
+                                  width: 90,
+                                  height: 90,
+                                  color: Colors.grey,
+                                )),
+                    ),
+                    SizedBox(height: 20),
                     Container(
                       margin: EdgeInsets.only(top: 10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                        color: Color(0xff8ACEF0),
+                        color: Color(0xff468faf),
                       ),
                       child: MaterialButton(
                         highlightColor: Colors.transparent,
@@ -171,14 +208,14 @@ class _SignUpPageState extends State<SignUpPage> {
                           child: Text(
                             'Cadastrar',
                             style: TextStyle(
-                              color: Colors.black,
+                              color: Color(0xff343a40),
                               fontSize: 25.0,
                             ),
                           ),
                         ),
                         onPressed: () async {
                           try {
-                            final user = UserModel(nome: nome);
+                            final user = UserModel(nome: nome, image: file);
                             setState(() {
                               isLoading = true;
                             });

@@ -24,7 +24,7 @@ class _DrawerPageState extends State<DrawerPage> {
                 Color(0xfff8f9fa),
                 Color(0xffced4da),
                 Color(0xff89c2d9),
-                Color(0xffa9d6e5),
+                Color(0xff014f86),
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -33,15 +33,20 @@ class _DrawerPageState extends State<DrawerPage> {
         child: ListView(children: [
           UserAccountsDrawerHeader(
             currentAccountPicture: CircleAvatar(child: Icon(Icons.person)),
-            accountName: Text(userController.model.nome),
+            // currentAccountPicture: CircleAvatar(
+            //     foregroundImage: MemoryImage(userController.model.image!)),
+            accountName: Text(
+              userController.model.nome,
+              style: TextStyle(),
+            ),
             accountEmail: Text(userController.user!.email!),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                   colors: <Color>[
-                    Color(0xfff8f9fa),
-                    Color(0xffced4da),
+                    Color(0xff014f86),
                     Color(0xff89c2d9),
-                    Color(0xffa9d6e5),
+                    Color(0xffced4da),
+                    Color(0xfff8f9fa),
                   ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -87,7 +92,7 @@ class _DrawerPageState extends State<DrawerPage> {
               style: TextStyle(fontSize: 18),
             ),
             onTap: () {
-               Navigator.push(
+              Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => TelasPage(),
@@ -101,7 +106,7 @@ class _DrawerPageState extends State<DrawerPage> {
               style: TextStyle(fontSize: 18),
             ),
             onTap: () {
-               Navigator.push(
+              Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => TelasPage(),
@@ -123,10 +128,8 @@ class _DrawerPageState extends State<DrawerPage> {
             onTap: () async {
               await userController.logout();
             },
-            leading:Icon(Icons.exit_to_app),
-            
+            leading: Icon(Icons.exit_to_app),
           ),
-          
         ]),
       ),
     );

@@ -36,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
                       Color(0xfff8f9fa),
                       Color(0xffced4da),
                       Color(0xff89c2d9),
-                      Color(0xffa9d6e5),
+                      Color(0xff014f86),
                     ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
@@ -77,10 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                         style: TextStyle(fontSize: 16.0, color: Colors.black),
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          icon: Icon(
-                            Icons.email,
-                            color: Colors.black,
-                          ),
+                          icon: Icon(Icons.email, color: Colors.grey),
                           hintText: 'Email',
                           hintStyle: TextStyle(fontSize: 16.0),
                         ),
@@ -111,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                           border: InputBorder.none,
                           icon: Icon(
                             FontAwesomeIcons.lock,
-                            color: Colors.black,
+                            color: Colors.grey,
                           ),
                           hintText: 'Senha',
                           hintStyle: TextStyle(
@@ -135,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
                           child: Text(
                             'Login',
                             style: TextStyle(
-                              color: Colors.black,
+                              color: Color(0xff343a40),
                               fontSize: 25.0,
                             ),
                           ),
@@ -172,7 +169,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: Text(
                           'Cadastrar',
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Color(0xff343a40),
                             fontSize: 20.0,
                           ),
                         ),
