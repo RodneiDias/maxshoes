@@ -12,6 +12,7 @@ class _InfantilPageState extends State<InfantilPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffa9d6e5),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
         stream: FirebaseFirestore.instance
             .collection('produtos')
@@ -22,45 +23,62 @@ class _InfantilPageState extends State<InfantilPage> {
             return Center(child: CircularProgressIndicator());
           }
 
-          final diarios = snapshot.data!.docs.map((map) {
+          final produtos = snapshot.data!.docs.map((map) {
             final data = map.data();
             return ProdutoModel.fromMap(data, map.id);
           }).toList();
 
           return ListView.builder(
-            itemCount: diarios.length,
+            itemCount: produtos.length,
             itemBuilder: (context, index) {
-              final diario = diarios[index];
+              final produto = produtos[index];
               return ListTile(
-                title: Text(diario.nome),
-                subtitle: Row(
-                  children: [
-                    Icon(Icons.location_on),
-                    Text(diario.categoria),
-                  ],
+                title: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white),
+                  child: Padding(
+                    padding: const EdgeInsets.all(1.0),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Column(
+                                children: [
+                                  produto.imagem != null
+                                      ? Image.memory(produto.imagem!,
+                                          width: 120, fit: BoxFit.cover)
+                                      : Container(
+                                          child:
+                                              Center(child: Text('No image')),
+                                          width: 120,
+                                          height: 120,
+                                          color: Colors.grey,
+                                        ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Column(
+                                children: [
+                                  Text('Produto: ${produto.nome}'),
+                                  SizedBox(height: 5),
+                                  Text('Categoria: ${produto.categoria}'),
+                                  SizedBox(height: 5),
+                                  Text('Preço R\$:${produto.preco}'),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ]),
+                  ),
                 ),
-                leading: diario.imagem != null
-                    ? Image.memory(
-                        diario.imagem!,
-                        fit: BoxFit.cover,
-                        width: 72,
-                      )
-                    : Container(
-                        child: Icon(Icons.location_on),
-                        width: 72,
-                        height: double.maxFinite,
-                        color: Colors.blue,
-                      ),
-                // onTap: () {
-                //   Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //       builder: (context) => EditDiarioPage(
-                //         diario: diario,
-                //       ),
-                //     ),
-                //   );
-                // },
               );
             },
           );

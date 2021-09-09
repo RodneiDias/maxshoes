@@ -147,6 +147,7 @@ class _ListaProdutoState extends State<ListaProduto> {
 showAlertDialog3(BuildContext context, ProdutoModel produto) {
   // configura os botões
   Widget lembrarButton = TextButton(
+    
     child: Text('Apagar'),
     onPressed: () {
       FirebaseFirestore.instance
