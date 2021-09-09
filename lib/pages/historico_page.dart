@@ -13,3 +13,14 @@ class _HistoricoPageState extends State<HistoricoPage> {
     return Scaffold(
       body: Column(
         children: [
+          Expanded(
+            flex: 2,
+            child: GraficosPage()),
+          Expanded(
+            flex: 2,
+            child: DashBoard()),
+        ],
+      ),
+    );
+  }
+}
