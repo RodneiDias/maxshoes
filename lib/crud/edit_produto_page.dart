@@ -102,107 +102,147 @@ class _EditProdutoPageState extends State<EditProdutoPage> {
                 maxLines: 10,
               ),
               SizedBox(height: 8),
-              ElevatedButton(
-                onPressed: () async {
-                  //abrir o explorador de arquivos:
-                  final result =
-                      await FilePicker.platform.pickFiles(type: FileType.image);
-                  //ele vai verifica se é nulo, pq o usuario pode abrir a pasta e nao selecionar nada..ai daria erro.
-                  // if (result != null) {
-                  //   if (Platform.isAndroid || Platform.isIOS) {
-                  //     final path = result.files.first.path;
-                  //     final image = File(path);
-                  //     final bytes = await image.readAsBytes();
-                  //     file = bytes;
-                  //   } else {
-                  //     final bytes = result.files.first.bytes;
-                  //     file = bytes;
-                  //   }
-                  //   setState(() {});
-                  // }
-                  if (result != null) {
-                    setState(() {
-                      //pra nao pegar uma lista inteira, coloco pra pegar somente o primeiro e puxo os bytes deste arquivo
-                      final bytes = result.files.first.bytes;
-                      // file vai receber os bytes que acabei de puxar.
-                      file = bytes;
-                    });
-                  }
-                },
-                child: Row(
-                  children: [
-                    Icon(file != null ? Icons.check : Icons.upload),
-                    Text("Adicionar imagem"),
-                  ],
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () async {
-                  //abrir o explorador de arquivos:
-                  final result =
-                      await FilePicker.platform.pickFiles(type: FileType.image);
-                  //ele vai verifica se é nulo, pq o usuario pode abrir a pasta e nao selecionar nada..ai daria erro.
-                  // if (result != null) {
-                  //   if (Platform.isAndroid || Platform.isIOS) {
-                  //     final path = result.files.first.path;
-                  //     final image2 = File(path);
-                  //     final bytes = await image2.readAsBytes();
-                  //     file2 = bytes;
-                  //   } else {
-                  //     final bytes = result.files.first.bytes;
-                  //     file2 = bytes;
-                  //   }
-                  //   setState(() {});
-                  // }
-                  if (result != null) {
-                    setState(() {
-                      //pra nao pegar uma lista inteira, coloco pra pegar somente o primeiro e puxo os bytes deste arquivo
-                      final bytes = result.files.first.bytes;
-                      // file vai receber os bytes que acabei de puxar.
-                      file2 = bytes;
-                    });
-                  }
-                },
-                child: Row(
-                  children: [
-                    Icon(file2 != null ? Icons.check : Icons.upload),
-                    Text("Adicionar imagem"),
-                  ],
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () async {
-                  //abrir o explorador de arquivos:
-                  final result =
-                      await FilePicker.platform.pickFiles(type: FileType.image);
-                  //ele vai verifica se é nulo, pq o usuario pode abrir a pasta e nao selecionar nada..ai daria erro.
-                  // if (result != null) {
-                  //   if (Platform.isAndroid || Platform.isIOS) {
-                  //     final path = result.files.first.path;
-                  //     final image3 = File(path);
-                  //     final bytes = await image3.readAsBytes();
-                  //     file3 = bytes;
-                  //   } else {
-                  //     final bytes = result.files.first.bytes;
-                  //     file3 = bytes;
-                  //   }
-                  //   setState(() {});
-                  // }
-                  if (result != null) {
-                    setState(() {
-                      //pra nao pegar uma lista inteira, coloco pra pegar somente o primeiro e puxo os bytes deste arquivo
-                      final bytes = result.files.first.bytes;
-                      // file vai receber os bytes que acabei de puxar.
-                      file3 = bytes;
-                    });
-                  }
-                },
-                child: Row(
-                  children: [
-                    Icon(file3 != null ? Icons.check : Icons.upload),
-                    Text("Adicionar imagem"),
-                  ],
-                ),
+              Row(
+                children: [
+                  GestureDetector(
+                    onTap: () async {
+                      //abrir o explorador de arquivos:
+                      final result =
+                          await FilePicker.platform.pickFiles(type: FileType.image);
+                      //ele vai verifica se é nulo, pq o usuario pode abrir a pasta e nao selecionar nada..ai daria erro.
+                      // if (result != null) {
+                      //   if (Platform.isAndroid || Platform.isIOS) {
+                      //     final path = result.files.first.path;
+                      //     final image = File(path);
+                      //     final bytes = await image.readAsBytes();
+                      //     file = bytes;
+                      //   } else {
+                      //     final bytes = result.files.first.bytes;
+                      //     file = bytes;
+                      //   }
+                      //   setState(() {});
+                      // }
+                      if (result != null) {
+                        setState(() {
+                          //pra nao pegar uma lista inteira, coloco pra pegar somente o primeiro e puxo os bytes deste arquivo
+                          final bytes = result.files.first.bytes;
+                          // file vai receber os bytes que acabei de puxar.
+                          file = bytes;
+                        });
+                      }
+                    },
+                    child: Padding(
+                          padding: EdgeInsets.all(15),
+                          child: 
+                            
+                            file!= null
+                                    ? Image.memory(file!,
+                                        width: 90, fit: BoxFit.fill)
+                                    : Container(
+                                        child:
+                                            Center(child: Icon(Icons.photo)),
+                                        width: 90,
+                                        height: 90,
+                                        color: Colors.grey,
+                                    )
+                          
+                        ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(5),
+                    child: GestureDetector(
+                      onTap: () async {
+                        //abrir o explorador de arquivos:
+                        final result =
+                            await FilePicker.platform.pickFiles(type: FileType.image);
+                        //ele vai verifica se é nulo, pq o usuario pode abrir a pasta e nao selecionar nada..ai daria erro.
+                        // if (result != null) {
+                        //   if (Platform.isAndroid || Platform.isIOS) {
+                        //     final path = result.files.first.path;
+                        //     final image2 = File(path);
+                        //     final bytes = await image2.readAsBytes();
+                        //     file2 = bytes;
+                        //   } else {
+                        //     final bytes = result.files.first.bytes;
+                        //     file2 = bytes;
+                        //   }
+                        //   setState(() {});
+                        // }
+                        if (result != null) {
+                          setState(() {
+                            //pra nao pegar uma lista inteira, coloco pra pegar somente o primeiro e puxo os bytes deste arquivo
+                            final bytes = result.files.first.bytes;
+                            // file vai receber os bytes que acabei de puxar.
+                            file2 = bytes;
+                          });
+                        }
+                      },
+                      child: Padding(
+                              padding: EdgeInsets.all(10),
+                              child: 
+                                
+                                file2!= null
+                                        ? Image.memory(file2!,
+                                            width: 90, fit: BoxFit.cover)
+                                        : Container(
+                                            child:
+                                                Center(child: Icon(Icons.photo)),
+                                            width: 90,
+                                            height: 90,
+                                            color: Colors.grey,
+                                        )
+                                
+                              
+                            ),
+                          ),
+                  ),
+                      
+                  GestureDetector(
+                    onTap: () async {
+                      //abrir o explorador de arquivos:
+                      final result =
+                          await FilePicker.platform.pickFiles(type: FileType.image);
+                      //ele vai verifica se é nulo, pq o usuario pode abrir a pasta e nao selecionar nada..ai daria erro.
+                      // if (result != null) {
+                      //   if (Platform.isAndroid || Platform.isIOS) {
+                      //     final path = result.files.first.path;
+                      //     final image3 = File(path);
+                      //     final bytes = await image3.readAsBytes();
+                      //     file3 = bytes;
+                      //   } else {
+                      //     final bytes = result.files.first.bytes;
+                      //     file3 = bytes;
+                      //   }
+                      //   setState(() {});
+                      // }
+                      if (result != null) {
+                        setState(() {
+                          //pra nao pegar uma lista inteira, coloco pra pegar somente o primeiro e puxo os bytes deste arquivo
+                          final bytes = result.files.first.bytes;
+                          // file vai receber os bytes que acabei de puxar.
+                          file3 = bytes;
+                        });
+                      }
+                    },
+                    child: Padding(
+                          padding: EdgeInsets.all(10),
+                          child: 
+                            
+                            file3!= null
+                                      ? Image.memory(file3!,
+                                          width: 90, fit: BoxFit.cover)
+                                      : Container(
+                                          child:
+                                              Center(child: Icon(Icons.photo)),
+                                          width: 90,
+                                          height: 90,
+                                          color: Colors.grey,
+                                      )
+                            
+                          
+                        ),
+                  ),
+                ],
               ),
               SizedBox(
                 height: 8,

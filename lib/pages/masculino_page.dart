@@ -40,64 +40,62 @@ class _MasculinoPageState extends State<MasculinoPage> {
                       color: Colors.white),
                   child: Padding(
                     padding: const EdgeInsets.all(1.0),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Row(
                             children: [
-                              Column(
-                                children: [
-                                  produto.imagem != null
-                                      ? Image.memory(produto.imagem!,
-                                          width: 120, fit: BoxFit.cover)
-                                      : Container(
-                                          child:
-                                              Center(child: Text('No image')),
-                                          width: 120,
-                                          height: 120,
-                                          color: Colors.grey,
-                                        ),
-                                  produto.imagem2 != null
-                                      ? Image.memory(produto.imagem2!,
-                                          width: 120, fit: BoxFit.cover)
-                                      : Container(
-                                          child:
-                                              Center(child: Text('No image')),
-                                          width: 120,
-                                          height: 120,
-                                          color: Colors.grey,
-                                        ),
-                                  produto.imagem3 != null
-                                      ? Image.memory(produto.imagem3!,
-                                          width: 120, fit: BoxFit.cover)
-                                      : Container(
-                                          child:
-                                              Center(child: Text('No image')),
-                                          width: 120,
-                                          height: 120,
-                                          color: Colors.grey,
-                                        ),
-                                ],
-                              ),
+                              produto.imagem != null
+                                  ? Image.memory(produto.imagem!,
+                                      width: 110, fit: BoxFit.cover)
+                                  : Container(
+                                      child:
+                                          Center(child: Text('No image')),
+                                      width: 110,
+                                      height: 110,
+                                      color: Colors.grey,
+                                    ),
+                              produto.imagem2 != null
+                                  ? Image.memory(produto.imagem2!,
+                                      width: 110, fit: BoxFit.cover)
+                                  : Container(
+                                      child:
+                                          Center(child: Text('No image')),
+                                      width: 110,
+                                      height: 110,
+                                      color: Colors.grey,
+                                    ),
+                              produto.imagem3 != null
+                                  ? Image.memory(produto.imagem3!,
+                                      width: 110, fit: BoxFit.cover)
+                                  : Container(
+                                      child:
+                                          Center(child: Text('No image')),
+                                      width: 110,
+                                      height: 110,
+                                      color: Colors.grey,
+                                    ),
                             ],
                           ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Column(
-                                children: [
-                                  Text('Produto: ${produto.nome}'),
-                                  SizedBox(height: 5),
-                                  Text('Categoria: ${produto.categoria}'),
-                                  SizedBox(height: 5),
-                                  Text('Preço R\$:${produto.preco}'),
-                                ],
-                              ),
-                            ],
+                          Center(
+                            child: Column(
+                              children: [
+                                
+                                Column(
+                                  children: [
+                                    Text('Produto: ${produto.nome}'),
+                                    SizedBox(height: 5),
+                                    Text('Categoria: ${produto.categoria}'),
+                                    SizedBox(height: 5),
+                                    Text('Preço R\$:${produto.preco}'),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ]),
+                        ],
+                        ),
                   ),
                 ),
               );
