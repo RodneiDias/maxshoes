@@ -110,9 +110,23 @@ class _DrawerPageState extends State<DrawerPage> {
             },
           ),
           Divider(
-            endIndent: 50,
-            color: Colors.lightBlue,
+            height: 4,
+            thickness: 4,
+            indent: 4,
+            endIndent: 4,
           ),
+          ListTile(
+            title: Text(
+              'Log Out',
+              style: TextStyle(fontSize: 20),
+            ),
+            onTap: () async {
+              await userController.logout();
+            },
+            leading:Icon(Icons.exit_to_app),
+            
+          ),
+          
         ]),
       ),
     );

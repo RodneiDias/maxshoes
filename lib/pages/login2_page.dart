@@ -102,6 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       padding: EdgeInsets.all(5),
                       child: TextField(
+                        obscureText: true,
                         textCapitalization: TextCapitalization.words,
                         keyboardType: TextInputType.text,
                         onChanged: (texto) => senha = texto,
