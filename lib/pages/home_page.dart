@@ -20,20 +20,21 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       drawer: DrawerPage(),
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: <Color>[
-              Color(0xff0097E3), Color(0xff506AA5),Color(0xff904674),Color(0xffCA2547)
-            ])          
-         ),        
-     ),
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: <Color>[
+                Color(0xfff8f9fa),
+                Color(0xffced4da),
+                Color(0xff89c2d9),
+                Color(0xffa9d6e5),
+              ])),
+        ),
         title: const Text('MaxShoes'),
         centerTitle: true,
         actions: [
@@ -45,7 +46,7 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      body: SplashPage(),
+      body: HistoricoPage(),
     );
   }
 }

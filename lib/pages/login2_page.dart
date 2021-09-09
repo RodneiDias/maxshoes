@@ -32,10 +32,10 @@ class _LoginPageState extends State<LoginPage> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                   colors: <Color>[
-                    Color(0xffCA2547),
-                    Color(0xff904674),
-                    Color(0xff506AA5),
-                    Color(0xff0097E3),
+                    Color(0xfff8f9fa),
+                    Color(0xffced4da),
+                    Color(0xff89c2d9),
+                    Color(0xffa9d6e5),
                   ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -44,13 +44,13 @@ class _LoginPageState extends State<LoginPage> {
           ),
           Center(
             child: Container(
-              margin: EdgeInsets.only(top: 140),
+              margin: EdgeInsets.only(top: 70),
               alignment: Alignment.topCenter,
               child: Image(
                   height:
-                      MediaQuery.of(context).size.height > 800 ? 191.0 : 150,
+                      MediaQuery.of(context).size.height > 800 ? 350.0 : 300,
                   fit: BoxFit.contain,
-                  image: AssetImage('assets/images/shoes.gif')),
+                  image: AssetImage('assets/images/shoes1.gif')),
             ),
           ),
           Padding(
@@ -123,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
                     margin: EdgeInsets.only(top: 10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                      color: Color(0xff8ACEF0),
+                      color: Color(0xff468faf),
                     ),
                     child: MaterialButton(
                       highlightColor: Colors.transparent,

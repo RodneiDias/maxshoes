@@ -35,37 +35,41 @@ class _SignUpPageState extends State<SignUpPage> {
             height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                  colors: <Color>[Color(0xffCA2547),Color(0xff904674),Color(0xff506AA5),Color(0xff0097E3)],
+                  colors: <Color>[
+                    Color(0xffCA2547),
+                    Color(0xff904674),
+                    Color(0xff506AA5),
+                    Color(0xff0097E3)
+                  ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   tileMode: TileMode.clamp),
             ),
           ),
-          
           Padding(
-            padding: const EdgeInsets.only(top: 132),
+            padding: const EdgeInsets.only(top: 50),
             child: Center(
               child: Container(
                 margin: EdgeInsets.only(top: 10),
                 alignment: Alignment.topCenter,
                 child: Image(
                     height:
-                        MediaQuery.of(context).size.height > 800 ? 191.0 : 150,
+                        MediaQuery.of(context).size.height > 800 ? 350.0 : 300,
                     fit: BoxFit.contain,
-                    image: AssetImage('assets/images/shoes.gif')),
+                    image: AssetImage('assets/images/shoes1.gif')),
               ),
             ),
           ),
-          
           Padding(
             padding: const EdgeInsets.only(top: 200),
             child: Container(
-              margin: EdgeInsets.only(top: 220, right: 30, bottom: 30, left: 30),
+              margin:
+                  EdgeInsets.only(top: 220, right: 30, bottom: 30, left: 30),
               child: Column(
                 children: [
                   if (isLoading) CircularProgressIndicator(),
                   Container(
-                    decoration:  BoxDecoration(
+                    decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(2.0)),
                       boxShadow: <BoxShadow>[
                         BoxShadow(color: Colors.white, blurRadius: 2),
@@ -146,8 +150,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           color: Colors.black,
                         ),
                         hintText: 'Senha',
-                        hintStyle: TextStyle(
-                            fontSize: 16.0),
+                        hintStyle: TextStyle(fontSize: 16.0),
                       ),
                     ),
                   ),
@@ -156,7 +159,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     margin: EdgeInsets.only(top: 10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                      color: Color(0xff8ACEF0), 
+                      color: Color(0xff8ACEF0),
                     ),
                     child: MaterialButton(
                       highlightColor: Colors.transparent,
@@ -173,30 +176,30 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       onPressed: () async {
                         try {
-                      final user = UserModel(nome: nome);
-                      setState(() {
-                        isLoading = true;
-                      });
-                      await userController.signup(email, senha, user);
-                      Navigator.pop(context);
-                    } on FirebaseAuthException catch (e) {
-                      setState(() {
-                        isLoading = false;
-                      });
-                      var msg = "";
+                          final user = UserModel(nome: nome);
+                          setState(() {
+                            isLoading = true;
+                          });
+                          await userController.signup(email, senha, user);
+                          Navigator.pop(context);
+                        } on FirebaseAuthException catch (e) {
+                          setState(() {
+                            isLoading = false;
+                          });
+                          var msg = "";
 
-                      if (e.code == "weak-password") {
-                        msg = "Senha fraca!";
-                      } else if (e.code == "email-already-in-use") {
-                        msg = "E-mail já cadastrado";
-                      } else {
-                        msg = "Ocorreu um erro";
-                      }
+                          if (e.code == "weak-password") {
+                            msg = "Senha fraca!";
+                          } else if (e.code == "email-already-in-use") {
+                            msg = "E-mail já cadastrado";
+                          } else {
+                            msg = "Ocorreu um erro";
+                          }
 
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text(msg),
-                      ));
-                    }
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text(msg),
+                          ));
+                        }
                       },
                       // child: Text("Criar conta"),
                     ),
