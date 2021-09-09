@@ -40,8 +40,11 @@ class _TelasPageState extends State<TelasPage> {
               isScrollable: true,
               indicatorColor: Colors.blue,
               labelStyle: TextStyle(fontSize: 20),
+              indicatorWeight: 7,
               tabs: [
-                Tab(child: Text("Todos os Produtos"),),
+                Tab(
+                  child: Text("Todos os Produtos"),
+                ),
                 Tab(child: Text("Masculino")),
                 Tab(child: Text("Feminino")),
                 Tab(child: Text("Infantil")),
