@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:max_shoes_vendedor/controllers/user_controller.dart';
-import 'package:max_shoes_vendedor/pages/lista_produtos.dart';
-import 'package:max_shoes_vendedor/pages/lista_venda.dart';
 import 'package:max_shoes_vendedor/pages/telas_page.dart';
 import 'package:provider/provider.dart';
 
@@ -78,7 +76,7 @@ class _DrawerPageState extends State<DrawerPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ListaVendas(),
+                  builder: (context) => TelasPage(),
                 ),
               );
             },
@@ -88,14 +86,28 @@ class _DrawerPageState extends State<DrawerPage> {
               'Feminino',
               style: TextStyle(fontSize: 18),
             ),
-            onTap: () {},
+            onTap: () {
+               Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => TelasPage(),
+                ),
+              );
+            },
           ),
           ListTile(
             title: Text(
               'Infantil',
               style: TextStyle(fontSize: 18),
             ),
-            onTap: () {},
+            onTap: () {
+               Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => TelasPage(),
+                ),
+              );
+            },
           ),
           Divider(
             endIndent: 50,
