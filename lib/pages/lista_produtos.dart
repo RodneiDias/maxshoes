@@ -21,8 +21,7 @@ class _ListaProdutoState extends State<ListaProduto> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueAccent,
-      
+      backgroundColor: Color(0xffa9d6e5),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
         stream: FirebaseFirestore.instance
             //filtra a coleção
@@ -47,8 +46,9 @@ class _ListaProdutoState extends State<ListaProduto> {
               final produto = produtos[index];
               return ListTile(
                 title: Container(
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.white),
-                  
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white),
                   child: Padding(
                     padding: const EdgeInsets.all(1.0),
                     child: Row(
@@ -63,7 +63,8 @@ class _ListaProdutoState extends State<ListaProduto> {
                                       ? Image.memory(produto.imagem!,
                                           width: 120, fit: BoxFit.cover)
                                       : Container(
-                                          child: Center(child: Text('No image')),
+                                          child:
+                                              Center(child: Text('No image')),
                                           width: 120,
                                           height: 120,
                                           color: Colors.grey,
@@ -80,8 +81,7 @@ class _ListaProdutoState extends State<ListaProduto> {
                                 value: dropdownValue,
                                 icon: const Icon(Icons.settings),
                                 iconSize: 20,
-                                style:
-                                    const TextStyle(color: Colors.black),
+                                style: const TextStyle(color: Colors.black),
                                 onChanged: (texto) {
                                   setState(() {
                                     dropdownValue = texto!;
@@ -124,7 +124,6 @@ class _ListaProdutoState extends State<ListaProduto> {
                         ]),
                   ),
                 ),
-                
               );
             },
           );
