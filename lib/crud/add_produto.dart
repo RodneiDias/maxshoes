@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:typed_data';
+import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -115,110 +116,150 @@ class _AddProdutoState extends State<AddProduto> {
                 onChanged: (texto) => descricao = texto,
               ),
               const SizedBox(height: 8),
-              ElevatedButton(
-                onPressed: () async {
-                  //abrir o explorador de arquivos:
-                 final result =
-                      await FilePicker.platform.pickFiles(type: FileType.image);
+              Row(
+                children: [
+                  GestureDetector(
+                    onTap: () async {
+                      //abrir o explorador de arquivos:
+                     final result =
+                          await FilePicker.platform.pickFiles(type: FileType.image);
 
-                  //ele vai verifica se é nulo, pq o usuario pode abrir a pasta e nao selecionar nada..ai daria erro.
-                  // if (result != null) {
-                  //   if (Platform.isAndroid || Platform.isIOS) {
-                  //     final path = result.files.first.path;
-                  //     final image = File(path);
-                  //     final bytes = await image.readAsBytes();
-                  //     file = bytes;
-                  //   } else {
-                  //     final bytes = result.files.first.bytes;
-                  //     file = bytes;
-                  //   }
-                  //   setState(() {});
-                  // }
-                  if (result != null) {
-                    setState(() {
-                      //pra nao pegar uma lista inteira, coloco pra pegar somente o primeiro e puxo os bytes deste arquivo
-                      final bytes = result.files.first.bytes;
-                      // file vai receber os bytes que acabei de puxar.
-                      file = bytes;
-                    });
-                  }
-                },
-                child: Row(
-                  children: [
-                    Icon(file != null ? Icons.check : Icons.upload),
-                    Text("Adicionar imagem"),
-                  ],
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () async {
-                  //abrir o explorador de arquivos:
-                  final result =
-                      await FilePicker.platform.pickFiles(type: FileType.image);
+                      //ele vai verifica se é nulo, pq o usuario pode abrir a pasta e nao selecionar nada..ai daria erro.
+                      // if (result != null) {
+                      //   if (Platform.isAndroid || Platform.isIOS) {
+                      //     final path = result.files.first.path;
+                      //     final image = File(path);
+                      //     final bytes = await image.readAsBytes();
+                      //     file = bytes;
+                      //   } else {
+                      //     final bytes = result.files.first.bytes;
+                      //     file = bytes;
+                      //   }
+                      //   setState(() {});
+                      // }
+                      if (result != null) {
+                        setState(() {
+                          //pra nao pegar uma lista inteira, coloco pra pegar somente o primeiro e puxo os bytes deste arquivo
+                          final bytes = result.files.first.bytes;
+                          // file vai receber os bytes que acabei de puxar.
+                          file = bytes;
+                        });
+                      }
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.all(15),
+                      child: 
+                        
+                        file!= null
+                                ? Image.memory(file!,
+                                    width: 90, fit: BoxFit.fill)
+                                : Container(
+                                    child:
+                                        Center(child: Icon(Icons.photo)),
+                                    width: 90,
+                                    height: 90,
+                                    color: Colors.grey,
+                                )
+                      
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: GestureDetector(
+                      onTap: () async {
+                        //abrir o explorador de arquivos:
+                        final result =
+                            await FilePicker.platform.pickFiles(type: FileType.image);
 
-                  //ele vai verifica se é nulo, pq o usuario pode abrir a pasta e nao selecionar nada..ai daria erro.
-                  // if (result != null) {
-                  //   if (Platform.isAndroid || Platform.isIOS) {
-                  //     final path = result.files.first.path;
-                  //     final image = File(path);
-                  //     final bytes = await image.readAsBytes();
-                  //     file = bytes;
-                  //   } else {
-                  //     final bytes = result.files.first.bytes;
-                  //     file = bytes;
-                  //   }
-                  //   setState(() {});
-                  // }
-                  if (result != null) {
-                    setState(() {
-                      //pra nao pegar uma lista inteira, coloco pra pegar somente o primeiro e puxo os bytes deste arquivo
-                      final bytes = result.files.first.bytes;
-                      // file vai receber os bytes que acabei de puxar.
-                      file2 = bytes;
-                    });
-                  }
-                },
-                child: Row(
-                  children: [
-                    Icon(file2 != null ? Icons.check : Icons.upload),
-                    Text("Adicionar imagem"),
-                  ],
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () async {
-                  //abrir o explorador de arquivos:
-                  final result =
-                      await FilePicker.platform.pickFiles(type: FileType.image);
+                        //ele vai verifica se é nulo, pq o usuario pode abrir a pasta e nao selecionar nada..ai daria erro.
+                        // if (result != null) {
+                        //   if (Platform.isAndroid || Platform.isIOS) {
+                        //     final path = result.files.first.path;
+                        //     final image = File(path);
+                        //     final bytes = await image.readAsBytes();
+                        //     file = bytes;
+                        //   } else {
+                        //     final bytes = result.files.first.bytes;
+                        //     file = bytes;
+                        //   }
+                        //   setState(() {});
+                        // }
+                        if (result != null) {
+                          setState(() {
+                            //pra nao pegar uma lista inteira, coloco pra pegar somente o primeiro e puxo os bytes deste arquivo
+                            final bytes = result.files.first.bytes;
+                            // file vai receber os bytes que acabei de puxar.
+                            file2 = bytes;
+                          });
+                        }
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.all(10),
+                        child: 
+                          
+                          file2!= null
+                                  ? Image.memory(file2!,
+                                      width: 90, fit: BoxFit.cover)
+                                  : Container(
+                                      child:
+                                          Center(child: Icon(Icons.photo)),
+                                      width: 90,
+                                      height: 90,
+                                      color: Colors.grey,
+                                  )
+                          
+                        
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    
+                    onTap: () async {
+                      //abrir o explorador de arquivos:
+                      final result =
+                          await FilePicker.platform.pickFiles(type: FileType.image);
 
-                  //ele vai verifica se é nulo, pq o usuario pode abrir a pasta e nao selecionar nada..ai daria erro.
-                  // if (result != null) {
-                  //   if (Platform.isAndroid || Platform.isIOS) {
-                  //     final path = result.files.first.path;
-                  //     final image = File(path);
-                  //     final bytes = await image.readAsBytes();
-                  //     file = bytes;
-                  //   } else {
-                  //     final bytes = result.files.first.bytes;
-                  //     file = bytes;
-                  //   }
-                  //   setState(() {});
-                  // }
-                  if (result != null) {
-                    setState(() {
-                      //pra nao pegar uma lista inteira, coloco pra pegar somente o primeiro e puxo os bytes deste arquivo
-                      final bytes = result.files.first.bytes;
-                      // file vai receber os bytes que acabei de puxar.
-                      file3 = bytes;
-                    });
-                  }
-                },
-                child: Row(
-                  children: [
-                    Icon(file3 != null ? Icons.check : Icons.upload),
-                    Text("Adicionar imagem"),
-                  ],
-                ),
+                      //ele vai verifica se é nulo, pq o usuario pode abrir a pasta e nao selecionar nada..ai daria erro.
+                      // if (result != null) {
+                      //   if (Platform.isAndroid || Platform.isIOS) {
+                      //     final path = result.files.first.path;
+                      //     final image = File(path);
+                      //     final bytes = await image.readAsBytes();
+                      //     file = bytes;
+                      //   } else {
+                      //     final bytes = result.files.first.bytes;
+                      //     file = bytes;
+                      //   }
+                      //   setState(() {});
+                      // }
+                      if (result != null) {
+                        setState(() {
+                          //pra nao pegar uma lista inteira, coloco pra pegar somente o primeiro e puxo os bytes deste arquivo
+                          final bytes = result.files.first.bytes;
+                          // file vai receber os bytes que acabei de puxar.
+                          file3 = bytes;
+                        });
+                      }
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.all(10),
+                      child: 
+                        
+                        file3!= null
+                                  ? Image.memory(file3!,
+                                      width: 90, fit: BoxFit.cover)
+                                  : Container(
+                                      child:
+                                          Center(child: Icon(Icons.photo)),
+                                      width: 90,
+                                      height: 90,
+                                      color: Colors.grey,
+                                  )
+                        
+                      
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 8),
               OutlinedButton(

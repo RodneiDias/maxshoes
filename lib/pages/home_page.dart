@@ -37,14 +37,6 @@ class _HomePageState extends State<HomePage> {
         ),
         title: const Text('MaxShoes', style: TextStyle(fontSize: 28)),
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () async {
-              await userController.logout();
-            },
-            icon: Icon(Icons.exit_to_app),
-          )
-        ],
       ),
       body: HistoricoPage(),
     );

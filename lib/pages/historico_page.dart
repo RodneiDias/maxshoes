@@ -19,7 +19,7 @@ class _HistoricoPageState extends State<HistoricoPage> {
           ),
           Expanded(
             flex: 2,
-            child: DashBoardPage()
+            child: DashBoard()
           ),
         ],
       ),
