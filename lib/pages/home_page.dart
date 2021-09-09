@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:max_shoes_vendedor/controllers/user_controller.dart';
 import 'package:max_shoes_vendedor/pages/lista_venda.dart';
+import 'package:max_shoes_vendedor/pages/splash_page.dart';
 import 'package:provider/provider.dart';
 
 import 'drawer_page.dart';
@@ -23,6 +24,16 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       drawer: DrawerPage(),
       appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: <Color>[
+              Color(0xff0097E3), Color(0xff506AA5),Color(0xff904674),Color(0xffCA2547)
+            ])          
+         ),        
+     ),
         title: const Text('MaxShoes'),
         centerTitle: true,
         actions: [
@@ -34,7 +45,7 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      body: HistoricoPage(),
+      body: SplashPage(),
     );
   }
 }

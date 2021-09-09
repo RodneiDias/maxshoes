@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:max_shoes_vendedor/pages/login2_page.dart';
 // import 'package:max_shoes_vendedor/pages/home_page.dart';
 import 'package:max_shoes_vendedor/pages/splash_page.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.grey,
         ),
-        home: SplashPage(),
+        home: LoginPage(),
       ),
     );
   }

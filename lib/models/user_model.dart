@@ -4,10 +4,9 @@ class UserModel {
   final String nome;
   final String? key;
   final Int8List? image;
-  final String? preco;
   UserModel({
     required this.nome,
-    this.key, this.image, this.preco
+    this.key, this.image
   });
 
   static UserModel fromMap(Map<String, dynamic> map) {
@@ -15,7 +14,6 @@ class UserModel {
       nome: map['nome'],
       key: map['key'],
       image:map['image'],
-      preco:map['preco']
     );
   }
 
@@ -24,7 +22,6 @@ class UserModel {
       'nome': nome,
       'key': key,
       'image': image,
-      'preco': preco,
     };
   }
 }
