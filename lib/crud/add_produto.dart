@@ -116,21 +116,28 @@ class _AddProdutoState extends State<AddProduto> {
               ElevatedButton(
                 onPressed: () async {
                   //abrir o explorador de arquivos:
-                  final result =
-                      await FilePicker.platform.pickFiles(type: FileType.image);
+                  FilePickerResult? result =
+                      await FilePicker.platform.pickFiles(allowMultiple: true);
+
+                  if (result != null) {
+                    List<File> files =
+                        result.paths.map((path) => File(path!)).toList();
+                  } else {
+                    // User canceled the picker
+                  }
                   //ele vai verifica se é nulo, pq o usuario pode abrir a pasta e nao selecionar nada..ai daria erro.
-                  // if (result != null) {
-                  //   if (Platform.isAndroid || Platform.isIOS) {
-                  //     final path = result.files.first.path;
-                  //     final image = File(path);
-                  //     final bytes = await image.readAsBytes();
-                  //     file = bytes;
-                  //   } else {
-                  //     final bytes = result.files.first.bytes;
-                  //     file = bytes;
-                  //   }
-                  //   setState(() {});
-                  // }
+                  if (result != null) {
+                    if (Platform.isAndroid || Platform.isIOS) {
+                      final path = result.files.first.path;
+                      final image = File(path);
+                      final bytes = await image.readAsBytes();
+                      file = bytes;
+                    } else {
+                      final bytes = result.files.first.bytes;
+                      file = bytes;
+                    }
+                    setState(() {});
+                  }
                   if (result != null) {
                     setState(() {
                       //pra nao pegar uma lista inteira, coloco pra pegar somente o primeiro e puxo os bytes deste arquivo
