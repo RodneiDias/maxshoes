@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
                 Color(0xffa9d6e5),
               ])),
         ),
-        title: const Text('MaxShoes'),
+        title: const Text('MaxShoes', style: TextStyle(fontSize: 28)),
         centerTitle: true,
         actions: [
           IconButton(

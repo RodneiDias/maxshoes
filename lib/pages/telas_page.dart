@@ -24,9 +24,21 @@ class _TelasPageState extends State<TelasPage> {
         length: 4,
         child: Scaffold(
           appBar: AppBar(
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: <Color>[
+                    Color(0xfff8f9fa),
+                    Color(0xffced4da),
+                    Color(0xff89c2d9),
+                    Color(0xffa9d6e5),
+                  ])),
+            ),
             bottom: TabBar(
               isScrollable: true,
-              indicatorColor: Colors.amberAccent,
+              indicatorColor: Colors.blue,
               tabs: [
                 Tab(child: Text("Todos os Produtos")),
                 Tab(child: Text("Masculino")),
@@ -34,17 +46,22 @@ class _TelasPageState extends State<TelasPage> {
                 Tab(child: Text("Infantil")),
               ],
             ),
-            title: Text("Max Shoes"),
+            title: Text(
+              "Max Shoes",
+              style: TextStyle(fontSize: 28),
+            ),
+            centerTitle: true,
           ),
           body: TabBarView(
             children: [
-              Tab(child: ListaProduto(),),
+              Tab(
+                child: ListaProduto(),
+              ),
               Tab(child: MasculinoPage()),
               Tab(child: FemininoPage()),
               Tab(child: InfantilPage()),
             ],
           ),
-        )
-    );
+        ));
   }
 }
