@@ -26,15 +26,17 @@ class _TelasPageState extends State<TelasPage> {
           appBar: AppBar(
             flexibleSpace: Container(
               decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: <Color>[
-                    Color(0xfff8f9fa),
-                    Color(0xffced4da),
-                    Color(0xff89c2d9),
-                    Color(0xffa9d6e5),
-                  ])),
+                gradient: LinearGradient(
+                    colors: <Color>[
+                      Color(0xfff8f9fa),
+                      Color(0xffced4da),
+                      Color(0xff89c2d9),
+                      Color(0xff014f86),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    tileMode: TileMode.clamp),
+              ),
             ),
             bottom: TabBar(
               isScrollable: true,

@@ -21,26 +21,27 @@ class _TodosProdutosPageState extends State<TodosProdutosPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(
+      appBar: AppBar(
         flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: <Color>[
-                Color(0xfff8f9fa),
-                Color(0xffced4da),
-                Color(0xff89c2d9),
-                Color(0xffa9d6e5),
-              ])),
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: <Color>[
+              Color(0xfff8f9fa),
+              Color(0xffced4da),
+              Color(0xff89c2d9),
+              Color(0xff014f86),
+            ],
+          )),
         ),
-        title: const Text('Todos Produtos', style: TextStyle(fontSize: 28)),
+        title: const Text('Todos Produtos', style: TextStyle(fontSize: 25)),
         centerTitle: true,
       ),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
         stream: FirebaseFirestore.instance
             //filtra a coleção
-            
+
             .collection('produtos')
             .orderBy('categoria')
             //filtra apenas a coleção do key do usuario logado
@@ -68,76 +69,73 @@ class _TodosProdutosPageState extends State<TodosProdutosPage> {
                   child: Padding(
                     padding: const EdgeInsets.all(1.0),
                     child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          
-                              Center(
-                            child: Column(
-                              children: [
-                                
-                                Column(
-                                  children: [
-                                    Text('Vendedor: ${userController.model.nome}', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Center(
+                          child: Column(
                             children: [
-                              produto.imagem != null
-                                  ? Image.memory(produto.imagem!,
-                                      width: 110, fit: BoxFit.cover)
-                                  : Container(
-                                      child:
-                                          Center(child: Text('No image')),
-                                      width: 110,
-                                      height: 110,
-                                      color: Colors.grey,
-                                    ),
-                              produto.imagem2 != null
-                                  ? Image.memory(produto.imagem2!,
-                                      width: 110, fit: BoxFit.cover)
-                                  : Container(
-                                      child:
-                                          Center(child: Text('No image')),
-                                      width: 110,
-                                      height: 110,
-                                      color: Colors.grey,
-                                    ),
-                              produto.imagem3 != null
-                                  ? Image.memory(produto.imagem3!,
-                                      width: 110, fit: BoxFit.cover)
-                                  : Container(
-                                      child:
-                                          Center(child: Text('No image')),
-                                      width: 110,
-                                      height: 110,
-                                      color: Colors.grey,
-                                    ),
+                              Column(
+                                children: [
+                                  Text('Vendedor: ${userController.model.nome}',
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold)),
+                                ],
+                              ),
                             ],
                           ),
-                          Center(
-                            child: Column(
-                              children: [
-                                
-                                Column(
-                                  children: [
-                                    Text('Produto: ${produto.nome}'),
-                                    SizedBox(height: 5),
-                                    Text('Categoria: ${produto.categoria}'),
-                                    SizedBox(height: 5),
-                                    Text('Preço R\$:${produto.preco}'),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
                         ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            produto.imagem != null
+                                ? Image.memory(produto.imagem!,
+                                    width: 110, fit: BoxFit.cover)
+                                : Container(
+                                    child: Center(child: Text('No image')),
+                                    width: 110,
+                                    height: 110,
+                                    color: Colors.grey,
+                                  ),
+                            produto.imagem2 != null
+                                ? Image.memory(produto.imagem2!,
+                                    width: 110, fit: BoxFit.cover)
+                                : Container(
+                                    child: Center(child: Text('No image')),
+                                    width: 110,
+                                    height: 110,
+                                    color: Colors.grey,
+                                  ),
+                            produto.imagem3 != null
+                                ? Image.memory(produto.imagem3!,
+                                    width: 110, fit: BoxFit.cover)
+                                : Container(
+                                    child: Center(child: Text('No image')),
+                                    width: 110,
+                                    height: 110,
+                                    color: Colors.grey,
+                                  ),
+                          ],
+                        ),
+                        Center(
+                          child: Column(
+                            children: [
+                              Column(
+                                children: [
+                                  Text('Produto: ${produto.nome}'),
+                                  SizedBox(height: 5),
+                                  Text('Categoria: ${produto.categoria}'),
+                                  SizedBox(height: 5),
+                                  Text('Preço R\$:${produto.preco}'),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               );
@@ -163,7 +161,6 @@ class _TodosProdutosPageState extends State<TodosProdutosPage> {
 showAlertDialog3(BuildContext context, ProdutoModel produto) {
   // configura os botões
   Widget lembrarButton = TextButton(
-    
     child: Text('Apagar'),
     onPressed: () {
       FirebaseFirestore.instance

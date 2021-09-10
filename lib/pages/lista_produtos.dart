@@ -21,7 +21,7 @@ class _ListaProdutoState extends State<ListaProduto> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffa9d6e5),
+      backgroundColor: Color(0xfff8f9fa),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
         stream: FirebaseFirestore.instance
             //filtra a coleção
@@ -52,96 +52,89 @@ class _ListaProdutoState extends State<ListaProduto> {
                   child: Padding(
                     padding: const EdgeInsets.all(1.0),
                     child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          DropdownButton<String>(
-                                value: dropdownValue,
-                                icon: const Icon(Icons.settings),
-                                iconSize: 20,
-                                style: const TextStyle(color: Colors.black),
-                                onChanged: (texto) {
-                                  setState(() {
-                                    dropdownValue = texto!;
-                                  });
-                                  if (dropdownValue == 'Apagar') {
-                                    showAlertDialog3(context, produto);
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        DropdownButton<String>(
+                          value: dropdownValue,
+                          icon: const Icon(Icons.settings),
+                          iconSize: 20,
+                          style: const TextStyle(color: Colors.black),
+                          onChanged: (texto) {
+                            setState(() {
+                              dropdownValue = texto!;
+                            });
+                            if (dropdownValue == 'Apagar') {
+                              showAlertDialog3(context, produto);
 
-                                    // Navigator.pop(context);
-                                  } else if (dropdownValue == 'Editar') {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              EditProdutoPage(produto: produto),
-                                        ));
-                                  }
-                                },
-                                items: <String>[
-                                  'Opções',
-                                  'Editar',
-                                  'Apagar'
-                                ].map<DropdownMenuItem<String>>((String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value),
-                                  );
-                                }).toList(),
-                              ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                              // Navigator.pop(context);
+                            } else if (dropdownValue == 'Editar') {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        EditProdutoPage(produto: produto),
+                                  ));
+                            }
+                          },
+                          items: <String>['Opções', 'Editar', 'Apagar']
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            produto.imagem != null
+                                ? Image.memory(produto.imagem!,
+                                    width: 110, fit: BoxFit.cover)
+                                : Container(
+                                    child: Center(child: Text('No image')),
+                                    width: 110,
+                                    height: 110,
+                                    color: Colors.grey,
+                                  ),
+                            produto.imagem2 != null
+                                ? Image.memory(produto.imagem2!,
+                                    width: 110, fit: BoxFit.cover)
+                                : Container(
+                                    child: Center(child: Text('No image')),
+                                    width: 110,
+                                    height: 110,
+                                    color: Colors.grey,
+                                  ),
+                            produto.imagem3 != null
+                                ? Image.memory(produto.imagem3!,
+                                    width: 110, fit: BoxFit.cover)
+                                : Container(
+                                    child: Center(child: Text('No image')),
+                                    width: 110,
+                                    height: 110,
+                                    color: Colors.grey,
+                                  ),
+                          ],
+                        ),
+                        Center(
+                          child: Column(
                             children: [
-                              produto.imagem != null
-                                  ? Image.memory(produto.imagem!,
-                                      width: 110, fit: BoxFit.cover)
-                                  : Container(
-                                      child:
-                                          Center(child: Text('No image')),
-                                      width: 110,
-                                      height: 110,
-                                      color: Colors.grey,
-                                    ),
-                              produto.imagem2 != null
-                                  ? Image.memory(produto.imagem2!,
-                                      width: 110, fit: BoxFit.cover)
-                                  : Container(
-                                      child:
-                                          Center(child: Text('No image')),
-                                      width: 110,
-                                      height: 110,
-                                      color: Colors.grey,
-                                    ),
-                              produto.imagem3 != null
-                                  ? Image.memory(produto.imagem3!,
-                                      width: 110, fit: BoxFit.cover)
-                                  : Container(
-                                      child:
-                                          Center(child: Text('No image')),
-                                      width: 110,
-                                      height: 110,
-                                      color: Colors.grey,
-                                    ),
+                              Column(
+                                children: [
+                                  Text('Produto: ${produto.nome}'),
+                                  SizedBox(height: 5),
+                                  Text('Categoria: ${produto.categoria}'),
+                                  SizedBox(height: 5),
+                                  Text('Preço R\$:${produto.preco}'),
+                                ],
+                              ),
                             ],
                           ),
-                          Center(
-                            child: Column(
-                              children: [
-                                
-                                Column(
-                                  children: [
-                                    Text('Produto: ${produto.nome}'),
-                                    SizedBox(height: 5),
-                                    Text('Categoria: ${produto.categoria}'),
-                                    SizedBox(height: 5),
-                                    Text('Preço R\$:${produto.preco}'),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
                         ),
+                      ],
+                    ),
                   ),
                 ),
               );
@@ -150,6 +143,7 @@ class _ListaProdutoState extends State<ListaProduto> {
         },
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xffeaac8b),
         child: Icon(Icons.add),
         onPressed: () {
           Navigator.push(
@@ -167,7 +161,6 @@ class _ListaProdutoState extends State<ListaProduto> {
 showAlertDialog3(BuildContext context, ProdutoModel produto) {
   // configura os botões
   Widget lembrarButton = TextButton(
-    
     child: Text('Apagar'),
     onPressed: () {
       FirebaseFirestore.instance
