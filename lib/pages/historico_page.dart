@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:max_shoes_vendedor/pages/dashboard_page.dart';
 import 'package:max_shoes_vendedor/pages/graficos_page.dart';
+import 'package:max_shoes_vendedor/pages/lista_venda.dart';
 
 class HistoricoPage extends StatefulWidget {
   @override
@@ -15,10 +16,10 @@ class _HistoricoPageState extends State<HistoricoPage> {
         children: [
           Expanded(
             flex: 2,
-            child: GraficosPage()),
-          Expanded(
-            flex: 2,
             child: DashBoard()),
+          Expanded(
+            flex: 3,
+            child: GraficoPage()),
         ],
       ),
     );
