@@ -18,17 +18,17 @@ class _ListUsuariosPageState extends State<ListUsuariosPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(
+      appBar: AppBar(
         flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: <Color>[
+                Color(0xff89c2d9),
                 Color(0xfff8f9fa),
                 Color(0xffced4da),
-                Color(0xff89c2d9),
-                Color(0xffa9d6e5),
+                Color(0xff014f86)
               ])),
         ),
         title: const Text('Todos Vendedores', style: TextStyle(fontSize: 28)),
@@ -56,12 +56,15 @@ class _ListUsuariosPageState extends State<ListUsuariosPage> {
                 final usuario = usuarios[index];
 
                 var cor = usuario.key == userController.model.key
-                    ? Color(0xff468faf)
+                    ? Color(0xff89c2d9)
                     : Colors.white;
 
                 return ListTile(
                   leading: Icon(Icons.person),
-                  title: Text(usuario.nome, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                  title: Text(
+                    usuario.nome,
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
                   tileColor: cor,
                 );
               });

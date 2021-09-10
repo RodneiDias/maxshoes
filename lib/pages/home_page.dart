@@ -29,10 +29,10 @@ class _HomePageState extends State<HomePage> {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: <Color>[
-                Color(0xff014f86),
                 Color(0xff89c2d9),
-                Color(0xffced4da),
                 Color(0xfff8f9fa),
+                Color(0xffced4da),
+                Color(0xff014f86)
               ])),
         ),
         title: const Text('MaxShoes',
