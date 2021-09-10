@@ -23,9 +23,9 @@ class _DrawerPageState extends State<DrawerPage> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
               colors: <Color>[
-                Color(0xff89c2d9),
                 Color(0xfff8f9fa),
                 Color(0xffced4da),
+                Color(0xff89c2d9),
                 Color(0xff014f86),
               ],
               // begin: Alignment.topLeft,
@@ -46,8 +46,8 @@ class _DrawerPageState extends State<DrawerPage> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                   colors: <Color>[
-                    Color(0xffced4da),
                     Color(0xfff8f9fa),
+                    Color(0xffced4da),
                     Color(0xff89c2d9),
                     Color(0xff014f86),
                   ],
