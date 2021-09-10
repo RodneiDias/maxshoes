@@ -33,13 +33,13 @@ class _LoginPageState extends State<LoginPage> {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                     colors: <Color>[
-                      Color(0xff89c2d9),
                       Color(0xfff8f9fa),
                       Color(0xffced4da),
+                      Color(0xff89c2d9),
                       Color(0xff014f86),
                     ],
-                    // begin: Alignment.topLeft,
-                    // end: Alignment.bottomRight,
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
                     tileMode: TileMode.clamp),
               ),
             ),
