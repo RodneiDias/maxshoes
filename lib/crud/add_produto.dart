@@ -62,7 +62,6 @@ class _AddProdutoState extends State<AddProduto> {
               ),
               TextField(
                 decoration: InputDecoration(
-                  //suffixIcon: Icon(Icons.location_on),
                   labelText: "Marca",
                 ),
                 onChanged: (texto) => marca = texto,
@@ -71,30 +70,20 @@ class _AddProdutoState extends State<AddProduto> {
                 decoration: InputDecoration(
                   labelText: "Preço",
                 ),
-                //maxLines: 20,
                 onChanged: (texto) => preco = texto,
               ),
               TextField(
                 decoration: InputDecoration(
                   labelText: "Tamanho",
                 ),
-                //maxLines: 20,
                 onChanged: (texto) => tamanho = texto,
               ),
               TextField(
                 decoration: InputDecoration(
                   labelText: "Cor",
                 ),
-                //maxLines: 20,
                 onChanged: (texto) => cor = texto,
               ),
-              // TextField(
-              //   decoration: InputDecoration(
-              //     labelText: "Categoria",
-              //   ),
-              //   //maxLines: 20,
-              //   onChanged: (texto) => categoria = texto,
-              // ),
               DropdownButton<String>(
                 value: dropdownValue,
                 icon: const Icon(Icons.arrow_downward),

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:max_shoes_vendedor/controllers/user_controller.dart';
-import 'package:max_shoes_vendedor/pages/lista_venda.dart';
-import 'package:max_shoes_vendedor/pages/splash_page.dart';
 import 'package:provider/provider.dart';
 
 import 'drawer_page.dart';

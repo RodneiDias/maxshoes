@@ -1,10 +1,7 @@
 import 'dart:ui';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:max_shoes_vendedor/controllers/user_controller.dart';
-
-import 'package:max_shoes_vendedor/crud/edit_produto_page.dart';
 import 'package:max_shoes_vendedor/models/produto_model.dart';
 import 'package:provider/provider.dart';
 
@@ -152,17 +149,6 @@ class _TodosProdutosPageState extends State<TodosProdutosPage> {
           );
         },
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   child: Icon(Icons.add),
-      //   onPressed: () {
-      //     Navigator.push(
-      //       context,
-      //       MaterialPageRoute(
-      //         builder: (context) => AddProduto(),
-      //       ),
-      //     );
-      //   },
-      // ),
     );
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:max_shoes_vendedor/controllers/user_controller.dart';
 import 'package:provider/provider.dart';
-
 import 'feminino_page.dart';
 import 'infantil_page.dart';
 import 'lista_produtos.dart';
@@ -33,8 +32,6 @@ class _TelasPageState extends State<TelasPage> {
                       Color(0xffced4da),
                       Color(0xff014f86)
                     ],
-                    // begin: Alignment.topLeft,
-                    // end: Alignment.bottomRight,
                     tileMode: TileMode.clamp),
               ),
             ),

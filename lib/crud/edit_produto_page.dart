@@ -16,7 +16,6 @@ class EditProdutoPage extends StatefulWidget {
 
 class _EditProdutoPageState extends State<EditProdutoPage> {
   late final nomeCont = TextEditingController()..text = widget.produto.nome;
-  // late final autorCont = TextEditingController()..text = widget.diario.autor;
   late final marcaCont = TextEditingController()..text = widget.produto.marca;
   late final precoCont = TextEditingController()..text = widget.produto.preco;
   late final tamanhoCont = TextEditingController()
@@ -73,14 +72,12 @@ class _EditProdutoPageState extends State<EditProdutoPage> {
               TextField(
                 controller: marcaCont,
                 decoration: InputDecoration(
-                  // suffixIcon: Icon(Icons.person),
                   labelText: "marca",
                 ),
               ),
               TextField(
                 controller: precoCont,
                 decoration: InputDecoration(
-                  // suffixIcon: Icon(Icons.location_on),
                   labelText: "Preço",
                 ),
               ),
@@ -89,21 +86,18 @@ class _EditProdutoPageState extends State<EditProdutoPage> {
                 decoration: InputDecoration(
                   labelText: "Tamanho",
                 ),
-                // maxLines: 20,
               ),
               TextField(
                 controller: corCont,
                 decoration: InputDecoration(
                   labelText: "Cor",
                 ),
-                // maxLines: 20,
               ),
               TextField(
                 controller: categoriaCont,
                 decoration: InputDecoration(
                   labelText: "Categoria",
                 ),
-                // maxLines: 20,
               ),
               TextField(
                 controller: descricaoCont,

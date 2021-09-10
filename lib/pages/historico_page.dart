@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:max_shoes_vendedor/pages/dashboard_page.dart';
 import 'package:max_shoes_vendedor/pages/graficos_page.dart';
-import 'package:max_shoes_vendedor/pages/lista_venda.dart';
+
 
 class HistoricoPage extends StatefulWidget {
   @override

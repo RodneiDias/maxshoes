@@ -3,9 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:max_shoes_vendedor/models/user_model.dart';
 
-//////signed - usuário
-//////unsigned - usuário deslogado
-//////loading - usuário carregando
 enum AuthState { signed, unsigned, loading }
 
 class UserController extends ChangeNotifier {
@@ -15,7 +12,7 @@ class UserController extends ChangeNotifier {
 //criando uma variavel _auth que so pode ser vista localmente e instanciando o FirebaseAuth.instance
   final _auth = FirebaseAuth.instance;
   final _db = FirebaseFirestore.instance;
-//toda vez que chamat o get ele retorna o usuário atual se não estiver logado ele será nulo
+//toda vez que chama o get ele retorna o usuário atual se não estiver logado ele será nulo
   User? get user => _auth.currentUser;
 
   UserController() {
