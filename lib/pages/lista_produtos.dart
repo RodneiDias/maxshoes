@@ -26,9 +26,9 @@ class _ListaProdutoState extends State<ListaProduto> {
         stream: FirebaseFirestore.instance
             //filtra a coleção
             .collection('produtos')
-            .orderBy('categoria')
+            //.orderBy('categoria')
             //filtra apenas a coleção do key do usuario logado
-            //.where('ownerKey', isEqualTo: userController.user!.uid)
+            .where('ownerKey', isEqualTo: userController.user!.uid)
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
@@ -89,6 +89,8 @@ class _ListaProdutoState extends State<ListaProduto> {
                                 }).toList(),
                               ),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               produto.imagem != null
                                   ? Image.memory(produto.imagem!,
