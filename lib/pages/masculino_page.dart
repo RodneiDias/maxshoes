@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:max_shoes_vendedor/controllers/user_controller.dart';
 import 'package:max_shoes_vendedor/models/produto_model.dart';
+import 'package:provider/provider.dart';
 
 class MasculinoPage extends StatefulWidget {
   MasculinoPage({Key? key}) : super(key: key);
@@ -10,6 +12,11 @@ class MasculinoPage extends StatefulWidget {
 }
 
 class _MasculinoPageState extends State<MasculinoPage> {
+  late final userController = Provider.of<UserController>(
+    context,
+    listen: false,
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,6 +24,7 @@ class _MasculinoPageState extends State<MasculinoPage> {
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
         stream: FirebaseFirestore.instance
             .collection('produtos')
+            .where('ownerKey', isEqualTo: userController.user!.uid)
             .where('categoria', isEqualTo: 'masculino')
             .snapshots(),
         builder: (context, snapshot) {
@@ -45,6 +53,8 @@ class _MasculinoPageState extends State<MasculinoPage> {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               produto.imagem != null
                                   ? Image.memory(produto.imagem!,

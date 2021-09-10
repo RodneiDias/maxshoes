@@ -1,29 +1,50 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:max_shoes_vendedor/controllers/user_controller.dart';
+
+import 'package:max_shoes_vendedor/crud/edit_produto_page.dart';
 import 'package:max_shoes_vendedor/models/produto_model.dart';
 import 'package:provider/provider.dart';
-class FemininoPage extends StatefulWidget {
-  FemininoPage({Key? key}) : super(key: key);
 
+class TodosProdutosPage extends StatefulWidget {
   @override
-  _FemininoPageState createState() => _FemininoPageState();
+  _TodosProdutosPageState createState() => _TodosProdutosPageState();
 }
 
-class _FemininoPageState extends State<FemininoPage> {
+class _TodosProdutosPageState extends State<TodosProdutosPage> {
   late final userController = Provider.of<UserController>(
     context,
     listen: false,
   );
+  dynamic dropdownValue = 'Opções';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffa9d6e5),
+       appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: <Color>[
+                Color(0xfff8f9fa),
+                Color(0xffced4da),
+                Color(0xff89c2d9),
+                Color(0xffa9d6e5),
+              ])),
+        ),
+        title: const Text('Todos Produtos', style: TextStyle(fontSize: 28)),
+        centerTitle: true,
+      ),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
         stream: FirebaseFirestore.instance
+            //filtra a coleção
+            
             .collection('produtos')
-            .where('ownerKey', isEqualTo: userController.user!.uid)
-            .where('categoria', isEqualTo: 'feminino')
+            .orderBy('categoria')
+            //filtra apenas a coleção do key do usuario logado
+            //.where('ownerKey', isEqualTo: userController.user!.uid)
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
@@ -50,8 +71,22 @@ class _FemininoPageState extends State<FemininoPage> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
+                          
+                              Center(
+                            child: Column(
+                              children: [
+                                
+                                Column(
+                                  children: [
+                                    Text('Vendedor: ${userController.model.nome}', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               produto.imagem != null
                                   ? Image.memory(produto.imagem!,
@@ -110,6 +145,54 @@ class _FemininoPageState extends State<FemininoPage> {
           );
         },
       ),
+      // floatingActionButton: FloatingActionButton(
+      //   child: Icon(Icons.add),
+      //   onPressed: () {
+      //     Navigator.push(
+      //       context,
+      //       MaterialPageRoute(
+      //         builder: (context) => AddProduto(),
+      //       ),
+      //     );
+      //   },
+      // ),
     );
   }
+}
+
+showAlertDialog3(BuildContext context, ProdutoModel produto) {
+  // configura os botões
+  Widget lembrarButton = TextButton(
+    
+    child: Text('Apagar'),
+    onPressed: () {
+      FirebaseFirestore.instance
+          .collection('produtos')
+          .doc(produto.key)
+          .delete();
+      Navigator.pop(context);
+    },
+  );
+  Widget cancelaButton = TextButton(
+    child: Text("Cancelar"),
+    onPressed: () {
+      Navigator.pop(context);
+    },
+  );
+  // configura o  AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text("Aviso"),
+    content: Text("Deseja mesmo apagar esse produto?"),
+    actions: [
+      lembrarButton,
+      cancelaButton,
+    ],
+  );
+  // exibe o dialogo
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }

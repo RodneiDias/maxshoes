@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:max_shoes_vendedor/controllers/user_controller.dart';
 import 'package:max_shoes_vendedor/pages/telas_page.dart';
+import 'package:max_shoes_vendedor/pages/todos_produtos_page.dart';
+import 'package:max_shoes_vendedor/pages/todos_vendedores_page.dart';
 import 'package:provider/provider.dart';
 
 class DrawerPage extends StatefulWidget {
@@ -108,6 +110,34 @@ class _DrawerPageState extends State<DrawerPage> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => TelasPage(),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            title: Text(
+              'Todos produtos',
+              style: TextStyle(fontSize: 18),
+            ),
+            onTap: () {
+               Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => TodosProdutosPage(),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            title: Text(
+              'Todos Vendedores',
+              style: TextStyle(fontSize: 18),
+            ),
+            onTap: () {
+               Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ListUsuariosPage(),
                 ),
               );
             },
