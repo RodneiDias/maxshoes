@@ -1,16 +1,19 @@
+import 'dart:html';
 import 'dart:typed_data';
 
 class UserModel {
   final String nome;
   final String? key;
-  final Uint8List? image;
-  UserModel({required this.nome, this.key, this.image});
+  final String? ownerName;
+  Uint8List? image;
+  UserModel({ required this.nome, this.key, this.ownerName, this.image});
 
   static UserModel fromMap(Map<String, dynamic> map) {
     return UserModel(
       nome: map['nome'],
       key: map['key'],
-      image: map['image'],
+      ownerName: map['ownerName'],
+      image: map['image']?.bytes,
     );
   }
 
@@ -18,7 +21,8 @@ class UserModel {
     return {
       'nome': nome,
       'key': key,
-      'image': image,
+      'ownerName': ownerName,
+      'image': image != null ? Blob(image!) : null,
     };
   }
 }
