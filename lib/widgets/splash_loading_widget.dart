@@ -15,11 +15,25 @@ class SplashLoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset('assets/images/shoes.gif'),
-        ],
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              colors: <Color>[
+                Color(0xfff8f9fa),
+                Color(0xffced4da),
+                Color(0xff89c2d9),
+                Color(0xff014f86),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              tileMode: TileMode.clamp),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/images/shoes1.gif'),
+          ],
+        ),
       ),
     );
   }

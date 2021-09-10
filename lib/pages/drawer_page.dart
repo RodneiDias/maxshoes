@@ -33,8 +33,6 @@ class _DrawerPageState extends State<DrawerPage> {
         child: ListView(children: [
           UserAccountsDrawerHeader(
             currentAccountPicture: CircleAvatar(child: Icon(Icons.person)),
-            // currentAccountPicture: CircleAvatar(
-            //     foregroundImage: MemoryImage(userController.model.image!)),
             accountName: Text(
               userController.model.nome,
               style: TextStyle(),
