@@ -143,8 +143,8 @@ class _ListaProdutoState extends State<ListaProduto> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Color(0xffeaac8b),
-        child: Icon(Icons.add),
+        backgroundColor: Color(0xff89c2d9),
+        child: Icon(Icons.add, color: Color(0xff343a40)),
         onPressed: () {
           Navigator.push(
             context,

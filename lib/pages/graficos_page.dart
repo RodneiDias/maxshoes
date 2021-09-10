@@ -23,7 +23,8 @@ class _GraficosPageState extends State<GraficosPage> {
       child: Scaffold(
         body: SfCircularChart(
           title: ChartTitle(text: ''),
-          legend: Legend(isVisible: true, overflowMode: LegendItemOverflowMode.wrap),
+          legend: Legend(
+              isVisible: true, overflowMode: LegendItemOverflowMode.wrap),
           tooltipBehavior: _tooltipBehavior,
           series: <CircularSeries>[
             DoughnutSeries<GDPData, String>(
@@ -41,9 +42,9 @@ class _GraficosPageState extends State<GraficosPage> {
   List<GDPData> getChartData(context) {
     final List<GDPData> chartData = [
       GDPData('Categoria', 1336),
-      GDPData('', 2900),
-      GDPData('', 23050),
-      GDPData('', 24880),
+      GDPData('Preço', 2900),
+      GDPData('Quantidade', 23050),
+      GDPData('Usuários', 24880),
     ];
     return chartData;
   }

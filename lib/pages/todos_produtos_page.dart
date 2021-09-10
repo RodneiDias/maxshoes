@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:max_shoes_vendedor/controllers/user_controller.dart';
@@ -28,14 +30,14 @@ class _TodosProdutosPageState extends State<TodosProdutosPage> {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: <Color>[
+              Color(0xff89c2d9),
               Color(0xfff8f9fa),
               Color(0xffced4da),
-              Color(0xff89c2d9),
-              Color(0xff014f86),
+              Color(0xff014f86)
             ],
           )),
         ),
-        title: const Text('Todos Produtos', style: TextStyle(fontSize: 25)),
+        title: const Text('Todos Produtos', style: TextStyle(fontSize: 28)),
         centerTitle: true,
       ),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
@@ -67,7 +69,7 @@ class _TodosProdutosPageState extends State<TodosProdutosPage> {
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.white),
                   child: Padding(
-                    padding: const EdgeInsets.all(1.0),
+                    padding: const EdgeInsets.all(5.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -79,13 +81,14 @@ class _TodosProdutosPageState extends State<TodosProdutosPage> {
                                 children: [
                                   Text('Vendedor: ${userController.model.nome}',
                                       style: TextStyle(
-                                          fontSize: 18,
+                                          fontSize: 22,
                                           fontWeight: FontWeight.bold)),
                                 ],
                               ),
                             ],
                           ),
                         ),
+                        SizedBox(height: 15),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -124,16 +127,22 @@ class _TodosProdutosPageState extends State<TodosProdutosPage> {
                             children: [
                               Column(
                                 children: [
-                                  Text('Produto: ${produto.nome}'),
-                                  SizedBox(height: 5),
-                                  Text('Categoria: ${produto.categoria}'),
-                                  SizedBox(height: 5),
-                                  Text('Preço R\$:${produto.preco}'),
+                                  Text(
+                                    'Produto: ${produto.nome}',
+                                    style: TextStyle(fontSize: 22),
+                                  ),
+                                  SizedBox(height: 8),
+                                  Text('Categoria: ${produto.categoria}',
+                                      style: TextStyle(fontSize: 20)),
+                                  SizedBox(height: 8),
+                                  Text('Preço R\$:${produto.preco}',
+                                      style: TextStyle(fontSize: 20)),
                                 ],
                               ),
                             ],
                           ),
                         ),
+                        SizedBox(height: 10),
                       ],
                     ),
                   ),
