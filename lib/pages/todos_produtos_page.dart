@@ -76,7 +76,7 @@ class _TodosProdutosPageState extends State<TodosProdutosPage> {
                             children: [
                               Column(
                                 children: [
-                                  Text('Vendedor: ${produto.ownerKey}',
+                                  Text('Vendedor: ${produto.ownerName}',
                                       style: TextStyle(
                                           fontSize: 22,
                                           fontWeight: FontWeight.bold)),

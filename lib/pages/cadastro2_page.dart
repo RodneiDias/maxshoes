@@ -173,7 +173,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                         onPressed: () async {
                           try {
-                            final user = UserModel(nome: nome);
+                            final user = UserModel(
+                                nome: nome, image: file, ownerName: nome);
                             setState(() {
                               isLoading = true;
                             });
@@ -197,6 +198,18 @@ class _SignUpPageState extends State<SignUpPage> {
                               content: Text(msg),
                             ));
                           }
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top:10),
+                      child: TextButton(
+                        child: Text('Logar',style: TextStyle(
+                                color: Color(0xff343a40),
+                                fontSize: 15.0,
+                              ),),
+                        onPressed: () {
+                          Navigator.pop(context);
                         },
                       ),
                     ),
