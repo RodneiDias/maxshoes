@@ -1,7 +1,5 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-
 import '../main.dart';
 
 class SegurancaPage extends StatefulWidget {
@@ -48,36 +46,7 @@ class _SegurancaPageState extends State<SegurancaPage>
       ),
     );
   }
-
-  // Widget informacoesWidget() {
-  //   return Container(
-  //     child: Column(
-  //       mainAxisAlignment: MainAxisAlignment.center,
-  //       children: [
-  //         Icon(
-  //           Icons.credit_card,
-  //           size: 72,
-  //           color: Colors.deepPurpleAccent.shade700,
-  //         ),
-  //         Text(
-  //           'Informações sensíveis!',
-  //           style: TextStyle(
-  //             fontWeight: FontWeight.w600,
-  //             fontSize: 25,
-  //           ),
-  //         ),
-  //         ListTile(
-  //           title: Text('Proteger o App por Biometria'),
-  //           leading: Switch(
-  //             value: biometria,
-  //             onChanged: (valor) => setState(() => biometria = valor),
-  //           ),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
-
+  
   Widget blockWidget() {
     double bottom = MediaQuery.of(context).size.height / 2;
     return BackdropFilter(

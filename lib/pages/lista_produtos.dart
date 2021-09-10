@@ -26,8 +26,6 @@ class _ListaProdutoState extends State<ListaProduto> {
         stream: FirebaseFirestore.instance
             //filtra a coleção
             .collection('produtos')
-            //.orderBy('categoria')
-            //filtra apenas a coleção do key do usuario logado
             .where('ownerKey', isEqualTo: userController.user!.uid)
             .snapshots(),
         builder: (context, snapshot) {
@@ -67,7 +65,6 @@ class _ListaProdutoState extends State<ListaProduto> {
                             if (dropdownValue == 'Apagar') {
                               showAlertDialog3(context, produto);
 
-                              // Navigator.pop(context);
                             } else if (dropdownValue == 'Editar') {
                               Navigator.push(
                                   context,
