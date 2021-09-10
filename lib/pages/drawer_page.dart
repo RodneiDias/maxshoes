@@ -77,48 +77,6 @@ class _DrawerPageState extends State<DrawerPage> {
           ),
           ListTile(
             title: Text(
-              'Masculino',
-              style: TextStyle(fontSize: 20),
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => TelasPage(),
-                ),
-              );
-            },
-          ),
-          ListTile(
-            title: Text(
-              'Feminino',
-              style: TextStyle(fontSize: 20),
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => TelasPage(),
-                ),
-              );
-            },
-          ),
-          ListTile(
-            title: Text(
-              'Infantil',
-              style: TextStyle(fontSize: 20),
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => TelasPage(),
-                ),
-              );
-            },
-          ),
-          ListTile(
-            title: Text(
               'Todos produtos',
               style: TextStyle(fontSize: 20),
             ),

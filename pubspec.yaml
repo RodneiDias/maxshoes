@@ -35,8 +35,8 @@ dependencies:
   universal_platform: ^1.0.0+1
   multi_image_picker: ^4.6.3
   font_awesome_flutter: ^9.1.0
-
-
+  pie_chart: ^5.0.0
+  charts_flutter: ^0.11.0
   
 
   # The following adds the Cupertino Icons font to your application.

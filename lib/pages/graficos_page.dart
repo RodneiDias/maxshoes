@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class GraficosPage extends StatefulWidget {
+class GraficoPage extends StatefulWidget {
   @override
-  _GraficosPageState createState() => _GraficosPageState();
+  _GraficoPageState createState() => _GraficoPageState();
 }
 
-class _GraficosPageState extends State<GraficosPage> {
-  late List<GDPData> _chartData;
-  late TooltipBehavior _tooltipBehavior;
+class _GraficoPageState extends State<GraficoPage> {
+  late List<ExpenseData> _chartData;
 
   @override
   void initState() {
-    _chartData = getChartData(context);
-    _tooltipBehavior = TooltipBehavior(enable: true);
+    _chartData = getChartData();
     super.initState();
   }
 
@@ -21,36 +19,52 @@ class _GraficosPageState extends State<GraficosPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: SfCircularChart(
-          title: ChartTitle(text: ''),
-          legend: Legend(isVisible: true, overflowMode: LegendItemOverflowMode.wrap),
-          tooltipBehavior: _tooltipBehavior,
-          series: <CircularSeries>[
-            DoughnutSeries<GDPData, String>(
-                dataSource: _chartData,
-                xValueMapper: (GDPData data, _) => data.propriedade,
-                yValueMapper: (GDPData data, _) => data.gdp,
-                dataLabelSettings: DataLabelSettings(isVisible: true),
-                enableTooltip: true)
-          ],
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SfCartesianChart(
+            legend: Legend(isVisible: true), 
+            backgroundColor: Colors.blue.shade200,
+            series: <ChartSeries>[
+              StackedColumnSeries<ExpenseData, String>(
+                color: Colors.pink.shade400,
+                  dataSource: _chartData,
+                  xValueMapper: (ExpenseData exp, _) => exp.expenseCategory,
+                  yValueMapper: (ExpenseData exp, _) => exp.masculino, name: 'Masculino'),
+              StackedColumnSeries<ExpenseData, String>(
+                color: Colors.orange,
+                  dataSource: _chartData,
+                  xValueMapper: (ExpenseData exp, _) => exp.expenseCategory,
+                  yValueMapper: (ExpenseData exp, _) => exp.feminino, name: 'Feminino'),
+              StackedColumnSeries<ExpenseData, String>(
+                color: Colors.purple.shade700,
+                  dataSource: _chartData,
+                  xValueMapper: (ExpenseData exp, _) => exp.expenseCategory,
+                  yValueMapper: (ExpenseData exp, _) => exp.infantil, name: 'Infantil'),
+            ],
+            primaryXAxis: CategoryAxis(),
+          ),
         ),
       ),
     );
   }
 
-  List<GDPData> getChartData(context) {
-    final List<GDPData> chartData = [
-      GDPData('Categoria', 1336),
-      GDPData('', 2900),
-      GDPData('', 23050),
-      GDPData('', 24880),
+  List<ExpenseData> getChartData() {
+
+    final List<ExpenseData> chartData = [
+
+      ExpenseData('Vendas', 20, 40, 20),
+      ExpenseData('Clientes', 5, 15, 5),
+      ExpenseData('Capital', 7, 6, 8),
     ];
     return chartData;
   }
 }
 
-class GDPData {
-  GDPData(this.propriedade, this.gdp);
-  final String propriedade;
-  final int gdp;
+class ExpenseData {
+  final String expenseCategory;
+  final num masculino;
+  final num feminino;
+  final num infantil;
+
+  ExpenseData(this.expenseCategory, this.masculino, this.feminino, this.infantil);
 }
