@@ -155,44 +155,44 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
                     SizedBox(height: 20),
-                    GestureDetector(
-                      onTap: () async {
-                        //abrir o explorador de arquivos:
-                        final result = await FilePicker.platform
-                            .pickFiles(type: FileType.image);
+                    // GestureDetector(
+                    //   onTap: () async {
+                    //     //abrir o explorador de arquivos:
+                    //     final result = await FilePicker.platform
+                    //         .pickFiles(type: FileType.image);
 
-                        // if (result != null) {
-                        //   if (Platform.isAndroid || Platform.isIOS) {
-                        //     final path = result.files.first.path;
-                        //     final image = File(path);
-                        //     final bytes = await image.readAsBytes();
-                        //     file = bytes;
-                        //   } else {
-                        //     final bytes = result.files.first.bytes;
-                        //     file = bytes;
-                        //   }
-                        //   setState(() {});
-                        // }
-                        if (result != null) {
-                          setState(() {
-                            //pra nao pegar uma lista inteira, coloco pra pegar somente o primeiro e puxo os bytes deste arquivo
-                            final bytes = result.files.first.bytes;
-                            // file vai receber os bytes que acabei de puxar.
-                            file = bytes;
-                          });
-                        }
-                      },
-                      child: Padding(
-                          padding: EdgeInsets.all(15),
-                          child: file != null
-                              ? Image.memory(file!, width: 90, fit: BoxFit.fill)
-                              : Container(
-                                  child: Center(child: Icon(Icons.photo)),
-                                  width: 90,
-                                  height: 90,
-                                  color: Colors.grey,
-                                )),
-                    ),
+                    //     // if (result != null) {
+                    //     //   if (Platform.isAndroid || Platform.isIOS) {
+                    //     //     final path = result.files.first.path;
+                    //     //     final image = File(path);
+                    //     //     final bytes = await image.readAsBytes();
+                    //     //     file = bytes;
+                    //     //   } else {
+                    //     //     final bytes = result.files.first.bytes;
+                    //     //     file = bytes;
+                    //     //   }
+                    //     //   setState(() {});
+                    //     // }
+                    //     if (result != null) {
+                    //       setState(() {
+                    //         //pra nao pegar uma lista inteira, coloco pra pegar somente o primeiro e puxo os bytes deste arquivo
+                    //         final bytes = result.files.first.bytes;
+                    //         // file vai receber os bytes que acabei de puxar.
+                    //         file = bytes;
+                    //       });
+                    //     }
+                    //   },
+                    //   child: Padding(
+                    //       padding: EdgeInsets.all(15),
+                    //       child: file != null
+                    //           ? Image.memory(file!, width: 90, fit: BoxFit.fill)
+                    //           : Container(
+                    //               child: Center(child: Icon(Icons.photo)),
+                    //               width: 90,
+                    //               height: 90,
+                    //               color: Colors.grey,
+                    //             )),
+                    // ),
                     SizedBox(height: 20),
                     Container(
                       margin: EdgeInsets.only(top: 10),
@@ -215,7 +215,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                         onPressed: () async {
                           try {
-                            final user = UserModel(nome: nome, image: file);
+                            final user = UserModel(nome: nome);
                             setState(() {
                               isLoading = true;
                             });
