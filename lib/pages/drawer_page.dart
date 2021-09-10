@@ -23,13 +23,13 @@ class _DrawerPageState extends State<DrawerPage> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
               colors: <Color>[
+                Color(0xff89c2d9),
                 Color(0xfff8f9fa),
                 Color(0xffced4da),
-                Color(0xff89c2d9),
                 Color(0xff014f86),
               ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
+              // begin: Alignment.topLeft,
+              // end: Alignment.bottomRight,
               tileMode: TileMode.clamp),
         ),
         child: ListView(children: [
@@ -37,19 +37,22 @@ class _DrawerPageState extends State<DrawerPage> {
             currentAccountPicture: CircleAvatar(child: Icon(Icons.person)),
             accountName: Text(
               userController.model.nome,
-              style: TextStyle(),
+              style: TextStyle(fontSize: 20),
             ),
-            accountEmail: Text(userController.user!.email!),
+            accountEmail: Text(
+              userController.user!.email!,
+              style: TextStyle(fontSize: 18),
+            ),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                   colors: <Color>[
-                    Color(0xff014f86),
-                    Color(0xff89c2d9),
                     Color(0xffced4da),
                     Color(0xfff8f9fa),
+                    Color(0xff89c2d9),
+                    Color(0xff014f86),
                   ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
+                  // begin: Alignment.topLeft,
+                  // end: Alignment.bottomRight,
                   tileMode: TileMode.clamp),
             ),
             currentAccountPictureSize: Size.square(72),
@@ -61,7 +64,7 @@ class _DrawerPageState extends State<DrawerPage> {
           ListTile(
             title: Text(
               'Lista de Produtos',
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 20),
             ),
             onTap: () {
               Navigator.push(
@@ -75,7 +78,7 @@ class _DrawerPageState extends State<DrawerPage> {
           ListTile(
             title: Text(
               'Masculino',
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 20),
             ),
             onTap: () {
               Navigator.push(
@@ -89,7 +92,7 @@ class _DrawerPageState extends State<DrawerPage> {
           ListTile(
             title: Text(
               'Feminino',
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 20),
             ),
             onTap: () {
               Navigator.push(
@@ -103,7 +106,7 @@ class _DrawerPageState extends State<DrawerPage> {
           ListTile(
             title: Text(
               'Infantil',
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 20),
             ),
             onTap: () {
               Navigator.push(
@@ -117,10 +120,10 @@ class _DrawerPageState extends State<DrawerPage> {
           ListTile(
             title: Text(
               'Todos produtos',
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 20),
             ),
             onTap: () {
-               Navigator.push(
+              Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => TodosProdutosPage(),
@@ -131,10 +134,10 @@ class _DrawerPageState extends State<DrawerPage> {
           ListTile(
             title: Text(
               'Todos Vendedores',
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 20),
             ),
             onTap: () {
-               Navigator.push(
+              Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => ListUsuariosPage(),
