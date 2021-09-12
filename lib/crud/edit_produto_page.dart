@@ -19,7 +19,7 @@ class _EditProdutoPageState extends State<EditProdutoPage> {
   late final ownerNameCont = TextEditingController()
     ..text = widget.produto.ownerName;
   late final marcaCont = TextEditingController()..text = widget.produto.marca;
-  late final precoCont = TextEditingController()..text = widget.produto.preco;
+  late final precoCont = TextEditingController()..text = widget.produto.preco.toString();
   late final tamanhoCont = TextEditingController()
     ..text = widget.produto.tamanho;
   late final corCont = TextEditingController()..text = widget.produto.cor;
@@ -242,7 +242,7 @@ class _EditProdutoPageState extends State<EditProdutoPage> {
                       ownerName: widget.produto.ownerName,
                       nome: nomeCont.text,
                       marca: marcaCont.text,
-                      preco: precoCont.text,
+                      preco: double.parse(precoCont.text),
                       tamanho: tamanhoCont.text,
                       cor: corCont.text,
                       categoria: categoriaCont.text,

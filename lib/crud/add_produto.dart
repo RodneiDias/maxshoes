@@ -295,7 +295,7 @@ class _AddProdutoState extends State<AddProduto> {
                     ownerName: userController.model.nome,
                     nome: nome,
                     marca: marca,
-                    preco: preco,
+                    preco: double.parse(preco),
                     tamanho: tamanho,
                     cor: cor,
                     categoria: dropdownValue,

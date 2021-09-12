@@ -8,7 +8,7 @@ class ProdutoModel {
   final String ownerName;
   final String nome;
   final String marca;
-  final String preco;
+  final double preco;
   final String tamanho;
   final String cor;
   final String categoria;
