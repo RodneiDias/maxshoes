@@ -59,15 +59,31 @@ class _ListUsuariosPageState extends State<ListUsuariosPage> {
                     ? Color(0xff89c2d9)
                     : Colors.white;
 
-                return ListTile(
-                  leading: Icon(Icons.person),
-                  title: Text(
-                    usuario.nome,
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 12.0),
+                  child: ListTile(
+                    
+                    leading: ClipOval(
+                      child: usuario.image != null
+                          ? Image.memory(
+                              usuario.image!,
+                              width: 60,
+                              height: 60,
+                              fit: BoxFit.fill,
+                            )
+                          : Icon(Icons.person, size: 60),
+                    ),
+                    title: Text(
+                      usuario.nome,
+                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    ),
+                    tileColor: cor,
+                    
                   ),
-                  tileColor: cor,
                 );
+                
               });
+              
         },
       ),
     );
